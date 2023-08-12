@@ -10,4 +10,4 @@ const TruthSchema = new schema({
   ]
 });
 
-module.exports = mongoose.model("Truth", TruthSchema);
+module.exports = mongoose.model("truth", TruthSchema);

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-const Level = require("./Level");
+const Level = require("./level");
 const userSchema = new schema({
   name: {
     required: true,

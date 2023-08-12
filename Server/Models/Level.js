@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Contructor = require("constructor")
-const Truth = require("truth")
+const Constructor = require("./constructor")
+const Truth = require("./truth")
 const schema = mongoose.Schema;
 
 const levelSchema = new schema({
@@ -17,4 +17,4 @@ const levelSchema = new schema({
   ]
 });
 
-module.exports = mongoose.model("Level", levelSchema);
+module.exports = mongoose.model("level", levelSchema);
