@@ -13,8 +13,8 @@ const ConstructorSchema = new schema({
     data: Buffer,
     contentType: String,
   },
-  function:{
-    type:Number //we'll define different functions to be different ints
+  func:{
+    type:String //we'll define different functions to be different ints
   }
 });
 
