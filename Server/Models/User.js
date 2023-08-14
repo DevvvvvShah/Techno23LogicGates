@@ -10,12 +10,9 @@ const userSchema = new schema({
     required: true,
     type: String,
   },
-  level: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: `Level`,
-    },
-  ],
+  leveltime: [
+    {levelno:Number,time:Number}
+  ]
 });
 
 module.exports = mongoose.model("User", userSchema);
