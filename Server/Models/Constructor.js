@@ -18,4 +18,4 @@ const ConstructorSchema = new schema({
   }
 });
 
-module.exports = mongoose.model("constructor", ConstructorSchema);
+module.exports = mongoose.model("Constructor", ConstructorSchema);

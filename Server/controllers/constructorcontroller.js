@@ -13,9 +13,9 @@ const Constructor = require('../Models/constructor');
 exports.setConstructor = async (req, res) => {
   try {
     const {name,desc,img,func}=req.body;
-    const constructor = new Constructor();
+    const constructor = new Constructor({name,desc,img,func});
     await constructor.save();
-    res.status(201).json(level);
+    res.status(201).json(constructor);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
