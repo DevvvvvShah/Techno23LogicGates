@@ -1,7 +1,14 @@
 const Constructor = require('../Models/Constructor');
+const TruthLine = require('../Models/truthLine');
 
-
-
+exports.getConstructor = async (req, res) => {
+  try {
+    const constructor = await Constructor.find(req.body).populate("func");
+    res.status(201).json(constructor);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 exports.setConstructor = async (req, res) => {
   try {
@@ -12,6 +19,17 @@ exports.setConstructor = async (req, res) => {
         message: "You must provide at least 1 file"
       });
     } else {
+      let objs = []
+      console.log(req.body.func)
+      for (let index = 0; index < req.body.func.length; index++) {
+        console.log(req.body.func[index]);
+        const truthline = new TruthLine(req.body.func[index]);
+        await truthline.save();
+        objs.push(truthline._id);
+      }
+      
+
+        // truthobj.push(truthline._id);
       let consobj = {
         name: req.body.name,
         desc: req.body.desc,
@@ -19,7 +37,7 @@ exports.setConstructor = async (req, res) => {
           data: req.body.img.data,
           contentType: req.body.img.mime
         },
-        func:req.body.func
+        func:objs
       };
       const constructor = new Constructor(consobj);
       await constructor.save();
