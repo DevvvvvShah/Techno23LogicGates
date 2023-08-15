@@ -17,6 +17,6 @@ const levelSchema = new schema({
     }
 });
 
-const constructor = require("./constructor")
-const truth = require("./truth")
+const constructor = require("./Constructor")
+const truth = require("./Truth")
 module.exports = mongoose.model("level", levelSchema);

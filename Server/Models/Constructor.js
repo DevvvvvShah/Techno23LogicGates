@@ -13,9 +13,7 @@ const ConstructorSchema = new schema({
     data: Buffer,
     contentType: String,
   },
-  func:{
-    type:String //we'll define different functions to be different ints
-  }
+  func:[{input:[Number],output:[Number]}]
 });
 
 module.exports = mongoose.model("Constructor", ConstructorSchema);
