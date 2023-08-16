@@ -11,10 +11,19 @@ const truthController = require('../controllers/truthController')
 router.post('/users', userController.createUser);
 router.get('/users', userController.getUsers);
 router.put('/users',userController.updateUsers);
+
+
+router.post('/login',userController.login);
+
+
 router.post('/level', levelController.setLevel);
 router.get('/level', levelController.getLevel);
+
+
 router.post('/constructor',upload.single("img"), constructorController.setConstructor);
 router.get('/constructor', constructorController.getConstructor);
+
+
 router.post('/truthline', truthController.setTruthLine);
 //router.post('/truth', truthController.setTruthTable);
 router.get('/truthline', truthController.getTruthLine);
