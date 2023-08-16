@@ -1,20 +1,24 @@
 const mongoose = require("mongoose");
-const Constructor = require("./constructor")
-const Truth = require("./truth")
 const schema = mongoose.Schema;
+const Constructor = require("./Constructor")
+const TruthLine = require("./truthLine")
 
 const levelSchema = new schema({
+  number:{
+    required: true,
+    type: Number
+  },
   //maybe dict for constructors and truth table, but this should work too
   constructors:[   //list for now
         {
-            type:mongoose.Schema.Types.ObjectId, ref: `Constructor`
+            type:mongoose.Schema.Types.ObjectId, ref: 'Constructor'
         }
   ],
-  truth_table:[
+  truthTable:[
     {
-        type:mongoose.Schema.Types.ObjectId, ref: `Truth`
+      type:mongoose.Schema.Types.ObjectId, ref: 'TruthLine'
     }
   ]
 });
 
-module.exports = mongoose.model("level", levelSchema);
+module.exports = mongoose.model("Level", levelSchema);

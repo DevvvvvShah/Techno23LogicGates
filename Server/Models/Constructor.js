@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-
+const TruthLine = require('../Models/truthLine');
 const ConstructorSchema = new schema({
   name: {
     required: true,
@@ -13,9 +13,9 @@ const ConstructorSchema = new schema({
     data: Buffer,
     contentType: String,
   },
-  function:{
-    type:Number //we'll define different functions to be different ints
-  }
+  func:[{
+      type:mongoose.Schema.Types.ObjectId, ref: 'TruthLine'
+    }]
 });
 
-module.exports = mongoose.model("constructor", ConstructorSchema);
+module.exports = mongoose.model("Constructor", ConstructorSchema);
