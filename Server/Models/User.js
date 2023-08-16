@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 const Level = require("./level");
 const userSchema = new schema({
-  name: {
+  username: {
     required: true,
     type: String,
   },
