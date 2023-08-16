@@ -7,9 +7,18 @@ const dotenv = require("dotenv")
 dotenv.config();
 
 const app = express();
+   
+const corsOpts = {
+    origin: true,
+    credentials: true,
+    preflightContinue: true,
+    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+    allowedHeaders: ['Content-Type'],
+    exposedHeaders: ['Content-Type']
+};
 
 // Middleware
-app.use(cors());
+app.use(cors(corsOpts));
 app.use(express.json());
 
 // Database connection

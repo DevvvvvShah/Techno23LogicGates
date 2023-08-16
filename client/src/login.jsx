@@ -5,22 +5,23 @@ export const Login = () => {
     const [reg_no, setReg_no] = useState('');
     const [password, setPassword] = useState('');
 
-    const handlesubmit =async (e) => {
+    const handleClick =async (e) => {
         const data = {
             username : reg_no,
             password : password
         }
+        console.log(data);
         const response = await fetch("http://127.0.0.1:5000/api/login",{
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
             credentials: "include", // include, *same-origin, omit
-            mode: "no-cors", // no-cors, *cors, same-origin
+            mode: "cors", // no-cors, *cors, same-origin
             headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin":"http://127.0.0.1:5000"
+              "Content-Type": "application/json"
+              //"Access-Control-Allow-Origin":"http://127.0.0.1:5000"
               // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            redirect: "follow", // manual, *follow, error
+            redirect: "manual", // manual, *follow, error
             referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify(data), // body data
         }).catch((error) => {
@@ -36,12 +37,12 @@ export const Login = () => {
     return ( 
         <div className="auth-form-container">
             <h2 >login</h2>
-            <form className="login-form" onSubmit={handlesubmit} >
+            <form className="login-form" >
                 <label htmlFor="reg_no">reg_no</label>
                 <input value = {reg_no} onChange= {(e)=> setReg_no(e.target.value)}type="reg_no" placeholder="mail..." id = "reg_no" name = "reg_no" />
                 <label htmlFor="password">password</label>
                 <input value = {password} onChange= {(e)=> setPassword(e.target.value)} type="password" placeholder="***" id = "password" name = "password" />
-                <button type="submit">Login</button>
+                <button type="button" onClick={handleClick}>Login</button>
             </form>
         </div>
      );
