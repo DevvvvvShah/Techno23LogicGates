@@ -10,19 +10,23 @@ export const Login = () => {
             username : reg_no,
             password : password
         }
-        const response = await fetch("localhost:5000/api/login",{
+        const response = await fetch("http://127.0.0.1:5000/api/login",{
             method: "POST", // *GET, POST, PUT, DELETE, etc.
-            mode: "cors", // no-cors, *cors, same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: "same-origin", // include, *same-origin, omit
+            credentials: "include", // include, *same-origin, omit
+            mode: "no-cors", // no-cors, *cors, same-origin
             headers: {
               "Content-Type": "application/json",
+              "Access-Control-Allow-Origin":"http://127.0.0.1:5000"
               // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             redirect: "follow", // manual, *follow, error
             referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify(data), // body data
+        }).catch((error) => {
+            console.log(error);
         })
+        console.log(response.status)
         if(response.status===200){
             navigate('/instructions');
         }
