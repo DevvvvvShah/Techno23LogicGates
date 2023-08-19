@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
-const TruthSchema = new schema({
+const TruthLineSchema = new schema({
   input:[
     {type:Boolean}
   ],
@@ -10,4 +10,4 @@ const TruthSchema = new schema({
   ]
 });
 
-module.exports = mongoose.model("truth", TruthSchema);
+module.exports = mongoose.model("TruthLine", TruthLineSchema);
