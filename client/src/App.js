@@ -14,6 +14,7 @@ function App() {
         <Routes>
           <Route path = "/" element={<Login/>} />
           <Route path = "/instructions" element={<Instruction/>} />
+          <Route path = "/Inter" element={<InteractiveNandBuilder/>} />
 
         </Routes>
       </div>
