@@ -11,12 +11,21 @@ const levelSchema = new schema({
   //maybe dict for constructors and truth table, but this should work too
   constructors:[   //list for now
         {
-            type:mongoose.Schema.Types.ObjectId, ref: 'Constructor'
+          type:mongoose.Schema.Types.ObjectId, ref: 'Constructor'
         }
   ],
   truthTable:[
     {
-      type:mongoose.Schema.Types.ObjectId, ref: 'TruthLine'
+      //type:mongoose.Schema.Types.ObjectId, ref: 'TruthLine'
+      input:[
+        {
+          type:Boolean
+        }
+      ],
+      output:
+        {
+          type:Boolean
+        }
     }
   ]
 });
