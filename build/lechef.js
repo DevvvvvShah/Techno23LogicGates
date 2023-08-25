@@ -378,6 +378,7 @@
   };
 
   var CircuitAndComponent = function(circuit, options) {
+    //var opts = $.extend({inputCount: 3}, options);
     this._componentName = "and";
     this.init(circuit, options);
   };

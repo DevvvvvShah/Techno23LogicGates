@@ -45,12 +45,6 @@ html, body {
   .circuit-feedback .circuit {
     position: relative;
   }
-  /*
-  * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
   font-family: Arial, sans-serif;
@@ -126,7 +120,6 @@ button {
   font-weight: bold;
 }
 
-  */
 </style>
 <style>
 </style>
@@ -156,8 +149,19 @@ button {
   </tbody>
 </table>
 
+<p id="counter">Elapsed time: 0 seconds</p>
+<script>
+  // Get the current time when the page loads
+  const startTime = new Date().getTime();
 
-<button id="refreshButton">Refresh</button>
+  // Update the counter every second
+  setInterval(() => {
+    const currentTime = new Date().getTime();
+    const elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
+    document.getElementById('counter').textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
+  }, 100); // Update every 0.1 second (100 milliseconds)
+</script>
+<button id="resetButton">Reset</button>
 
 <div style="position:relative;">
   <div class="circuit-exercise-container"></div>
@@ -195,12 +199,12 @@ button {
     {input: {y: false, z: true,w: false, x: false}, output: true},
     {input: {y: true, z: false,w: false, x: false}, output: true},
     {input: {y: false, z: false,w: false, x: false}, output: true},
-    ], components: ["and", "not", "or"]
+    ], components: ["and", "not", "or", "xor","nor","halfsubtractor"]
     
 });
-const refreshButton = document.getElementById('refreshButton');
-  refreshButton.addEventListener('click', function() {
-    location.reload();
+const resetButton = document.getElementById('resetButton');
+  resetButton.addEventListener('click', function() {
+    exer.reset();
   });
 
 exer.on('ready', function() {
