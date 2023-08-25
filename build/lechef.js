@@ -1095,6 +1095,34 @@
       addSubmit: true}, options);
     this.lang = this.options.lang || "en";
     this.element = this.options.element;
+    this.events = {
+      componentAdded: [],
+      // Define other events here
+    };
+    this.on = function (eventName, callback) {
+      console.log('Adding event listener for:', eventName);
+      if (this.events[eventName]) {
+        console.log("if ke andar");
+        // console.log(callback);
+        // this.events[eventName].push(callback);
+        this.addComponent(callback);
+      }
+    };
+  
+    this.trigger = function (eventName, eventData) {
+      console.log("trigger");
+      if (this.events[eventName]) {
+        console.log("yaha bhi aa gye");
+        this.events[eventName].forEach(function (callback) {
+          callback(eventData);
+        });
+      }
+    };
+    this.addComponent = function (component) {
+      // Logic to add component...
+      console.log("hiii");
+      this.trigger('componentAdded', { component: component });
+    };
     this._init();
   };
   var exerproto = CircuitExercise.prototype;
