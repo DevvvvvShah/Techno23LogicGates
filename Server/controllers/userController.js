@@ -32,8 +32,8 @@ exports.login = async (req,res) => {
 
 exports.createUser = async (req, res) => {
   try {
-    const {username,password}=req.body;
-    const user = new User({username,password});
+    const userdata=req.body;
+    const user = new User(userdata);
     await user.save();
     res.status(201).json(user);
   } catch (error) {
@@ -52,10 +52,12 @@ exports.getUsers = async (req, res) => {
 
 exports.updateUsers = async (req, res) => {
   try {
-    const {objectid,level,time} = req.body;
-    const users = await User.updateOne({_id: objectid},{$set: {leveltime:{levelno:level,time:time}}});
+    const level = req.body.levels[0];
+    console.log(level.levelno)
+    const users = await User.updateOne({username: req.params.name, 'levels.levelno': level.levelno },
+    {'$set':{'levels.$.done':level.done,'levels.$.time':level.time}});
     res.status(201).json(users);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-};
+}

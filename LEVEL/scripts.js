@@ -1,16 +1,19 @@
 
 const startTime = new Date().getTime();
-
   // Update the counter every second
+var elapsedTime;
 setInterval(() => {
 const currentTime = new Date().getTime();
-const elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
+elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
 document.getElementById('counter').textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
 }, 100); // Update every 0.1 second (100 milliseconds)
 
-var exer;
 
-const response = fetch("http://127.0.0.1:5000/api/level/2",{
+const number = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
+var exer;
+//console.log(number)
+const url = "http://127.0.0.1:5000/api/level/"+number
+const response = fetch(url,{
     method: "Get", // *GET, POST, PUT, DELETE, etc.
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
     credentials: "include", // include, *same-origin, omit
@@ -62,9 +65,38 @@ const response = fetch("http://127.0.0.1:5000/api/level/2",{
       exer.grade(function(feedback) {
       new CircuitExerciseFeedback(exer.options, feedback, {element: $("#feedback")});
           if(feedback.success){
-              alert("Level completed successfully")
-              window.location.href = 'Levelpage.html'; 
-              //send time to db;               
+            alert("Level completed successfully")
+            //send time to db;
+            const url = "localhost:5000/api/users/"+localStorage.username;
+            const data = {
+                'levels':[
+                  {
+                    'levelno': number,
+                    'done':true,
+                    'time':elapsedTime.toFixed(1)
+                  }
+                ]  
+            }
+            console.log(data);
+            const response = fetch(url,{
+              method: "Put", // *GET, POST, PUT, DELETE, etc.
+              cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+              credentials: "include", // include, *same-origin, omit
+              mode: "cors", // no-cors, *cors, same-origin
+              headers: {
+                "Content-Type": "application/json"
+                //"Access-Control-Allow-Origin":"http://127.0.0.1:5000"
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              redirect: "manual", // manual, *follow, error
+              referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+              body: JSON.stringify(data), // body data
+            }).catch((error) => {
+              console.log(error);
+            }).then((response) => response.json.then((data) => {
+              console.log(response.status);
+            }))
+              window.location.href = 'Levelpage.html';            
           }
       });
   });
@@ -73,19 +105,44 @@ const response = fetch("http://127.0.0.1:5000/api/level/2",{
   resetButton.addEventListener('click', function() {
   exer.reset();
   });
-  const submitbutton = document.getElementById('submitfinal');
-  submitbutton.addEventListener('click',function(){
-      const feed = document.getElementById('feedback');
-      // feed.style.display = 'flex';
-      exer.grade(function(feedback) {
-      new CircuitExerciseFeedback(exer.options, feedback,{element: $("#feedback")});
-          if(feedback.success){
-              alert("Level completed successfully")
-              window.location.href = 'Levelpage.html'; 
-              //send time to db;
-          }
-      });
-  });
+
+  // const submitbutton = document.getElementById('submitfinal');
+  // submitbutton.addEventListener('click',function(){
+  //     const feed = document.getElementById('feedback');
+  //     // feed.style.display = 'flex';
+  //     exer.grade(function(feedback) {
+  //     new CircuitExerciseFeedback(exer.options, feedback,{element: $("#feedback")});
+  //         if(feedback.success){
+  //             alert("Level completed successfully")
+  //             //send time to db;
+  //             const url = "localhost:5000/api/users/"+localStorage.username;
+  //             const levelnum = "level"+number;
+  //             const data = {
+  //               levelnum:{
+  //                 'done':true,
+  //                 'time':elapsedTime.toFixed(1)
+  //               }
+  //             }
+  //             const response = fetch(url,{
+  //               method: "Put", // *GET, POST, PUT, DELETE, etc.
+  //               cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+  //               credentials: "include", // include, *same-origin, omit
+  //               mode: "cors", // no-cors, *cors, same-origin
+  //               headers: {
+  //                 "Content-Type": "application/json"
+  //                 //"Access-Control-Allow-Origin":"http://127.0.0.1:5000"
+  //                 // 'Content-Type': 'application/x-www-form-urlencoded',
+  //               },
+  //               redirect: "manual", // manual, *follow, error
+  //               referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  //               body: JSON.stringify(data), // body data
+  //             }).catch((error) => {
+  //               console.log(error);
+  //             })
+  //             window.location.href = 'Levelpage.html'; 
+  //         }
+  //     });
+  // });
   
   })
 

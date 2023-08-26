@@ -10,7 +10,7 @@ const truthController = require('../controllers/truthController')
 
 router.post('/users', userController.createUser);
 router.get('/users', userController.getUsers);
-router.put('/users',userController.updateUsers);
+router.put('/users/:name',userController.updateUsers);
 
 
 router.post('/login',userController.login);

@@ -10,9 +10,11 @@ const userSchema = new schema({
     required: true,
     type: String,
   },
-  leveltime: [
-    {levelno:Number,time:Number}
-  ]
+  levels:[{
+    levelno:{type:Number},
+    done:{type:Boolean,default:false},
+    time:{type:Number,default:0}
+  }]
 });
 
 module.exports = mongoose.model("User", userSchema);
