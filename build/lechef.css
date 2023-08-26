@@ -1,1 +1,321 @@
-.lechef-circuit,.lechef-circuit svg{width:100%;height:100%}.lechef-circuit{position:relative;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.lechef-circuit svg,.lechef-circuit svg *{z-index:10}.lechef-component{width:90px;height:60px;position:absolute;top:5%;left:5%;cursor:move;z-index:0}.lechef-component .lechef-label{position:absolute;top:35%;left:22%;margin:0;color:#00a5eb}.lechef-output-component .lechef-label,.lechef-input-component .lechef-label{font-size:130%;top:28%}.lechef-output-component .lechef-label{left:48%}.lechef-input-component .lechef-label{left:18%}.lechef-nor .lechef-label{left:27%}.lechef-or .lechef-label,.lechef-xor .lechef-label,.lechef-eqv .lechef-label{left:30%}.lechef-halfadder,.lechef-halfsubstractor{width:80px}.lechef-halfadder .lechef-label{font-size:200%;font-weight:bolder;top:25%;left:30%}.lechef-halfsubstractor .lechef-label{font-size:200%;font-weight:bolder;top:20%;left:20%}.lechef-component path,.lechef-component rect,.lechef-component circle,.lechef-component polygon,.lechef-component line{stroke-width:3;stroke-linejoin:round;stroke-linecap:round;fill:none;stroke:#00a5eb}.lechef-input-component,.lechef-output-component{width:50px;height:50px}.lechef-value-false:before,.lechef-value-true:before,.lechef-value-false:before,.lechef-value-true:before,.lechef-value-unknown:before{display:block;position:absolute;top:-15px;font-size:1.2em}.lechef-output.lechef-value-false:before,.lechef-output.lechef-value-true:before,.lechef-output.lechef-value-unknown:before{right:-15px}.lechef-input.lechef-value-false:before,.lechef-input.lechef-value-true:before,.lechef-input.lechef-value-unknown:before{left:-15px}.lechef-value-interactive:before{border:2px dashed #ccc;padding:5px;top:-20px}.lechef-value-interactive.lechef-input[data-pos="1"]:before{top:0}.lechef-value-incorrect:before{border-color:red;color:white;background-color:rgba(255,120,120,0.5)}.lechef-value-correct:before{border-color:green;color:white;background-color:rgba(120,255,120,0.5)}.lechef-value-unknown:before{content:"??";color:red;padding:3px;border-color:red}.lechef-input,.lechef-output{width:15px;height:15px;border-radius:50%;position:absolute;border:2px solid #00a5eb;background-color:#fff;z-index:100}.lechef-output{right:-10px}.lechef-input{left:-10px;z-index:200 !important}.lechef-input.over{z-index:200 !important}.lechef-output:hover,.lechef-input.over{box-shadow:0 0 10px green}.lechef-output.ui-draggable-dragging{border:none;background-color:transparent;z-index:0 !important}.lechef-connector{stroke-width:5px;stroke:#00a5eb;fill:none}.lechef-unconnected{stroke:#e16464}.lechef-input-output tr:before{position:absolute;content:"";width:0;height:0;margin-top:5px;border:10px solid transparent}.lechef-showfeedback .lechef-connector.lechef-value-false,.lechef-feedback .lechef-connector.lechef-value-false{stroke:#787878}.lechef-showfeedback .lechef-input.lechef-missing,.lechef-showfeedback .lechef-output.lechef-missing,.lechef-feedback .lechef-input.lechef-missing,.lechef-feedback .lechef-output.lechef-missing{border-color:red;box-shadow:0 0 10px red}.lechef-showfeedback .lechef-value-true:before,.lechef-feedback .lechef-value-true:before{content:"1"}.lechef-showfeedback .lechef-value-false:before,.lechef-feedback .lechef-value-false:before{content:"0"}.lechef-feedback,.lechef-feedback tr{position:relative}.lechef-feedback table{position:relative;margin:0 auto;text-align:center}.lechef-feedback tbody tr{cursor:pointer}.lechef-feedback h2{text-align:center}.lechef-feedback .lechef-close{position:absolute;left:10px;top:10px}.lechef-feedback table td{text-align:center;padding:5px 20px;border:1px dashed transparent;border-left-width:0;border-right-width:0}.lechef-feedback .lechef-top{text-align:center}.lechef-feedback .lechef-correct .lechef-output-table{color:greenyellow}.lechef-feedback .lechef-incorrect .lechef-output-table{color:#EE5757}.lechef-feedback .lechef-active{font-weight:bolder}.lechef-feedback tr.lechef-active:before{border-left-color:gray;left:-10px}.lechef-feedback .lechef-incorrect.lechef-active td{border-color:#EE5757}.lechef-feedback .lechef-correct.lechef-active td{border-color:greenyellow}.lechef-buttonpanel{text-align:center;margin:1em auto}.lechef-buttonpanel button{margin:0 3px}
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,    
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* Actual code starts here*/ 
+
+*{
+  box-sizing: border-box;
+  
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background: linear-gradient(to bottom, white, rgb(124, 124, 224));
+  background-repeat: no-repeat;
+}
+.circuit-exercise-container {
+  height: 300px;
+  width: 100%;
+  border: none;
+  padding: 0;
+  background-color: rgb(92, 31, 31);
+  background-color: transparent;
+}
+.circuit-exercise-container > svg {
+  z-index: 0;
+}
+
+
+  .circuit-feedback {
+    background-color: rgb(92, 31, 31);
+    z-index: 300;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .circuit-feedback * {
+    z-index: 300;
+    cursor: auto !important;
+  }
+  .circuit-feedback .circuit {
+    position: relative;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 20%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.circuit-container {
+  position: relative;
+  margin-top: 20px;
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#componentUsage {
+  margin-top: 20px;
+}
+
+#componentUsage h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.component-counter {
+  display: inline-block;
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.component-counter span {
+  font-weight: bold;
+}
+
+/*lechef code starts here*/ 
+
+.lechef-circuit,.lechef-circuit svg{width:100%;height:100%}
+
+.lechef-circuit{position:relative;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+
+.lechef-circuit svg,.lechef-circuit svg *{z-index:10}
+
+.lechef-component{width:90px;height:60px;position:absolute;top:5%;left:5%;cursor:move;z-index:0}
+
+.lechef-component .lechef-label{position:absolute;top:35%;left:22%;margin:0;color:black}
+
+.lechef-output-component .lechef-label,.lechef-input-component .lechef-label
+{font-size:130%;top:28%}
+
+.lechef-output-component .lechef-label{left:48%}
+
+.lechef-input-component .lechef-label{left:18%}
+
+.lechef-nor .lechef-label{left:27%}
+
+.lechef-or .lechef-label,.lechef-xor .lechef-label,.lechef-eqv .lechef-label{left:30%}
+
+.lechef-halfadder,.lechef-halfsubstractor{width:80px}
+
+.lechef-halfadder .lechef-label{font-size:200%;font-weight:bolder;top:25%;left:30%}
+
+.lechef-halfsubstractor .lechef-label{font-size:200%;font-weight:bolder;top:20%;left:20%}
+
+.lechef-component path,.lechef-component rect,.lechef-component circle,.lechef-component polygon,.lechef-component line{stroke-width:3;stroke-linejoin:round;stroke-linecap:round;fill:none;stroke: #000}
+
+.lechef-input-component,.lechef-output-component{width:50px;height:50px}
+
+.lechef-value-false:before,.lechef-value-true:before,.lechef-value-false:before,.lechef-value-true:before,.lechef-value-unknown:before{display:block;position:absolute;top:-15px;font-size:1.2em}
+
+.lechef-output.lechef-value-false:before,.lechef-output.lechef-value-true:before,.lechef-output.lechef-value-unknown:before{right:-15px}
+
+.lechef-input.lechef-value-false:before,.lechef-input.lechef-value-true:before,.lechef-input.lechef-value-unknown:before{left:-15px}
+
+.lechef-value-interactive:before{border:2px dashed #ccc;padding:5px;top:-20px}
+
+.lechef-value-interactive.lechef-input[data-pos="1"]:before{top:0}
+
+.lechef-value-incorrect:before{border-color:red;color:white;background-color:rgba(255,120,120,0.5)}
+
+.lechef-value-correct:before{border-color:green;color:white;background-color:rgba(120,255,120,0.5)}
+
+.lechef-value-unknown:before{content:"??";color:red;padding:3px;border-color:red}
+
+.lechef-input,.lechef-output{width:15px;height:15px;border-radius:50%;position:absolute;border:2px solid #000;background-color:#fff;z-index:100}
+
+.lechef-output{right:-10px}.lechef-input{left:-10px;z-index:200 !important}
+
+.lechef-input.over{z-index:200 !important}
+
+.lechef-output:hover,.lechef-input.over{box-shadow:0 0 10px green}
+
+.lechef-output.ui-draggable-dragging{border:none;background-color:transparent;z-index:0 !important}
+
+.lechef-connector{stroke-width:5px;stroke:#000;fill:none}
+
+.lechef-unconnected{stroke:#e16464}
+
+.lechef-input-output tr:before{position:absolute;content:"";width:0;height:0;margin-top:5px;border:10px solid transparent}
+
+.lechef-showfeedback .lechef-connector.lechef-value-false,.lechef-feedback .lechef-connector.lechef-value-false{stroke:#787878}
+
+.lechef-showfeedback .lechef-input.lechef-missing,.lechef-showfeedback .lechef-output.lechef-missing,.lechef-feedback .lechef-input.lechef-missing,.lechef-feedback .lechef-output.lechef-missing{border-color:red;box-shadow:0 0 10px red}
+
+.lechef-showfeedback .lechef-value-true:before,.lechef-feedback .lechef-value-true:before{content:"1"}
+
+.lechef-showfeedback .lechef-value-false:before,.lechef-feedback .lechef-value-false:before{content:"0"}
+
+.lechef-feedback,.lechef-feedback tr{position:relative}
+
+.lechef-feedback table{position:relative;margin:0 auto;text-align:center}
+
+.lechef-feedback tbody tr{cursor:pointer}
+
+.lechef-feedback h2{text-align:center}
+
+.lechef-feedback .lechef-close{position:absolute;left:10px;top:10px}
+
+.lechef-feedback table td{text-align:center;padding:5px 20px;border:1px dashed transparent;border-left-width:0;border-right-width:0}
+
+.lechef-feedback .lechef-top{text-align:center}
+
+.lechef-feedback .lechef-correct .lechef-output-table{color:greenyellow}
+
+.lechef-feedback .lechef-incorrect .lechef-output-table{color:#EE5757}
+
+.lechef-feedback .lechef-active{font-weight:bolder}
+
+.lechef-feedback tr.lechef-active:before{border-left-color:gray;left:-10px}
+
+.lechef-feedback .lechef-incorrect.lechef-active td{border-color:#EE5757}
+
+.lechef-feedback .lechef-correct.lechef-active td{border-color:greenyellow}
+
+.lechef-buttonpanel{text-align:center;margin:1em auto}
+
+.lechef-buttonpanel button{margin:0 3px}
