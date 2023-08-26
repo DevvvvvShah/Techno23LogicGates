@@ -127,25 +127,13 @@ button {
 <div>Construct a circuit for this truth table:</div>
 <table>
   <thead>
-    <tr><th>Y</th><th>Z</th><th>W</th><th>X</th><th>G</th></tr>
+    <tr><th>Y</th><th>Z</th><th>G</th></tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
-    <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-    <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-    <tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-    <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-    <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-    <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-    <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-    <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-    <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
   </tbody>
 </table>
 
@@ -181,27 +169,40 @@ button {
 <script src="../libs/snap.svg.js"></script>
 <script src="../build/lechef.js"></script>
 <script>
-  var exer = new CircuitExercise({element: $(".circuit-exercise-container"), input: ["y","z","w","x"], output: "g",
-    grading: [
-    {input: {y: true, z: true,w: true, x: true}, output: true},
-    {input: {y: false, z: true,w: true, x: true}, output: false},
-    {input: {y: true, z: false,w: true, x: true}, output: false},
-    {input: {y: false, z: false,w: true, x: true}, output: false},
-    {input: {y: true, z: true,w: false, x: true}, output: true},
-    {input: {y: false, z: true,w: false, x: true}, output: false},
-    {input: {y: true, z: false,w: false, x: true}, output: true},
-    {input: {y: false, z: false,w: false, x: true}, output: true},
-    {input: {y: true, z: true,w: true, x: false}, output: true},
-    {input: {y: false, z: true,w: true, x: false}, output: true},
-    {input: {y: true, z: false,w: true, x: false}, output: false},
-    {input: {y: false, z: false,w: true, x: false}, output: true},
-    {input: {y: true, z: true,w: false, x: false}, output: true},
-    {input: {y: false, z: true,w: false, x: false}, output: true},
-    {input: {y: true, z: false,w: false, x: false}, output: true},
-    {input: {y: false, z: false,w: false, x: false}, output: true},
-    ], components: ["and", "not", "or", "xor","nor","halfsubtractor"]
-    
-});
+    var exer;
+    const getData = async() => {
+    const data = {
+      number:1
+    }
+    const response = await fetch("http://127.0.0.1:5000/api/level/2",{
+            method: "Get", // *GET, POST, PUT, DELETE, etc.
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "include", // include, *same-origin, omit
+            mode: "cors", // no-cors, *cors, same-origin
+            headers: {
+              "Content-Type": "application/json"
+              //"Access-Control-Allow-Origin":"http://127.0.0.1:5000"
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: "manual", // manual, *follow, error
+            referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            //body: JSON.stringify(data), // body data
+        }).catch((error) => {
+            console.log(error);
+        })
+        console.log(response.status);
+        const levels = await response.json();
+        //console.log(level[1].constructors);
+        const level = levels[0]
+        const table = level.truthTable;
+        const components = level.constructors
+        const input = Object.keys(table[0].input)
+        //console.log(Object.keys(table[0].input))
+        var exer = new CircuitExercise({element: $(".circuit-exercise-container"), input: input, output: ["g"],
+          grading: table, components: components
+        });
+    }
+  getData();
 const resetButton = document.getElementById('resetButton');
   resetButton.addEventListener('click', function() {
     exer.reset();
