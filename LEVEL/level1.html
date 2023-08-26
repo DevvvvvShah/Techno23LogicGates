@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<style>
+/<style>
 * {
   box-sizing: border-box;
 }
@@ -16,54 +16,11 @@ html, body {
   width: 100%;
   margin: 0;
 }
-.circuit-exercise-container {
-  height: 300px;
-  width: 100%;
-  border: none;
-  padding: 0;
-  background-color: rgb(92, 31, 31);
-  background-color: transparent;
-}
-.circuit-exercise-container > svg {
-  z-index: 0;
-}
 
-
-  .circuit-feedback {
-    background-color: rgb(92, 31, 31);
-    z-index: 300;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-  }
-  .circuit-feedback * {
-    z-index: 300;
-    cursor: auto !important;
-  }
-  .circuit-feedback .circuit {
-    position: relative;
-  }
-  /*
-  * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -101,6 +58,7 @@ button {
   margin-top: 20px;
   background-color: #eee;
   padding: 20px;
+  width: 100%;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -126,53 +84,41 @@ button {
   font-weight: bold;
 }
 
-  */
+#feedback {
+  display: flex;
+  z-index: 10;
+  position: absolute;
+}
+
+#design-example{
+  margin-top: 20px;
+}
+
+</style>
+<style>
 </style>
 <h1>Circuit Exercise Example</h1>
 <div>Construct a circuit for this truth table:</div>
 <table>
   <thead>
-    <tr><th>Y</th><th>Z</th><th>W</th><th>X</th><th>G</th></tr>
+    <tr><th>Y</th><th>Z</th><th>G</th></tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
-    <tr><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-    <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-    <tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-    <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-    <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-    <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
-    <tr><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-    <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-    <tr><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-    <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
   </tbody>
 </table>
 
 <p id="counter">Elapsed time: 0 seconds</p>
 
+<button id="resetButton">Reset</button>
+<button id="submitfinal">Submit</button>
 
-<div>
-  <div class=" design-example lechef-exercise">
-    <div class="">
-      <div id="design-example-feedback" class="circuit-container"></div>
-      <div id="design-example" class="circuit-container"></div>
-    </div>
-    <div class="">
-      <div class="">
-        <button class=" reset">Reset</button>
-      </div>
-      <div class="">
-        <button class="feedback">​Feedback​</button>
-      </div>
-    </div>
-  </div>
-  </div>
+<div id="feedback" class="circuit-container"></div>
+<div id="design-example" class="circuit-container"></div>
+
 
 <div id="componentUsage">
     <h3>Component Usage:</h3>
