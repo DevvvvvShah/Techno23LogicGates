@@ -126,14 +126,10 @@ button {
 <h1>Circuit Exercise Example</h1>
 <div>Construct a circuit for this truth table:</div>
 <table>
-  <thead>
-    <tr><th>Y</th><th>Z</th><th>G</th></tr>
+  <thead id="tablehead">
+    
   </thead>
-  <tbody>
-    <tr><td>1</td><td>1</td><td>1</td></tr>
-    <tr><td>0</td><td>1</td><td>0</td></tr>
-    <tr><td>1</td><td>0</td><td>0</td></tr>
-    <tr><td>0</td><td>0</td><td>0</td></tr>
+  <tbody id="tablebody">
   </tbody>
 </table>
 
@@ -197,7 +193,27 @@ button {
         const table = level.truthTable;
         const components = level.constructors
         const input = Object.keys(table[0].input)
-        //console.log(Object.keys(table[0].input))
+        var thead = "<thead>";
+        thead+='<tr>'
+        for (let i = 0; i < input.length; i++) {
+          const element = input[i];
+          thead+='<th>'+element.toUpperCase()+'</th>'
+        }
+        thead+='<th>'+'G'+'</th>'
+        thead+='</thead>'
+        document.getElementById('tablehead').innerHTML = thead;
+        var tbody = "<tbody>";
+        for(let k = 0; k<table.length;k++){
+          tbody+='<tr>';
+          const element = Object.values(table[k].input);
+          for (let j = 0; j < input.length; j++) {
+            tbody+='<td>'+Number(element[j])+'</td>';
+          } 
+          tbody+='<th>'+Number(table[k].output)+'</th>'; 
+          tbody+='</tr>';
+        }
+        tbody+='</tbody>';
+        document.getElementById('tablebody').innerHTML = tbody;
         var exer = new CircuitExercise({element: $(".circuit-exercise-container"), input: input, output: ["g"],
           grading: table, components: components
         });
