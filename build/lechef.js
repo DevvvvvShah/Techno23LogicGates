@@ -23,6 +23,7 @@
     FEEDBACKCLASS: { true: "lechef-value-correct",
                     false: "lechef-value-incorrect"}
   };
+
   // Connector in the logic circuit from one component's output to
   // another's input. *DO NOT* modify the inputs and outputs through
   // this object.
@@ -1144,6 +1145,7 @@
   exerproto.reset = function() {
     this._init();
   };
+
   exerproto.grade = function (callback) {
     var checks = $.extend([], this.options.grading),
       feedback = {checks: [], success: true},

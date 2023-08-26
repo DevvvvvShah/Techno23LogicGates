@@ -154,12 +154,25 @@ button {
   </tbody>
 </table>
 
+<p id="counter">Elapsed time: 0 seconds</p>
 
-<button id="refreshButton">Refresh</button>
 
-<div style="position:relative;">
-  <div class="circuit-exercise-container"></div>
-</div>
+<div>
+  <div class=" design-example lechef-exercise">
+    <div class="">
+      <div id="design-example-feedback" class="circuit-container"></div>
+      <div id="design-example" class="circuit-container"></div>
+    </div>
+    <div class="">
+      <div class="">
+        <button class=" reset">Reset</button>
+      </div>
+      <div class="">
+        <button class="feedback">​Feedback​</button>
+      </div>
+    </div>
+  </div>
+  </div>
 
 <div id="componentUsage">
     <h3>Component Usage:</h3>
@@ -174,56 +187,6 @@ button {
 <script src="../libs/jquery-ui-1.11.min.js"></script>
 <script src="../libs/snap.svg.js"></script>
 <script src="../build/lechef.js"></script>
-<script>
-  var exer = new CircuitExercise({element: $(".circuit-exercise-container"), input: ["y","z","w","x"], output: "g",
-    grading: [
-    {input: {y: true, z: true,w: true, x: true}, output: true},
-    {input: {y: false, z: true,w: true, x: true}, output: false},
-    {input: {y: true, z: false,w: true, x: true}, output: false},
-    {input: {y: false, z: false,w: true, x: true}, output: false},
-    {input: {y: true, z: true,w: false, x: true}, output: true},
-    {input: {y: false, z: true,w: false, x: true}, output: false},
-    {input: {y: true, z: false,w: false, x: true}, output: true},
-    {input: {y: false, z: false,w: false, x: true}, output: true},
-    {input: {y: true, z: true,w: true, x: false}, output: true},
-    {input: {y: false, z: true,w: true, x: false}, output: true},
-    {input: {y: true, z: false,w: true, x: false}, output: false},
-    {input: {y: false, z: false,w: true, x: false}, output: true},
-    {input: {y: true, z: true,w: false, x: false}, output: true},
-    {input: {y: false, z: true,w: false, x: false}, output: true},
-    {input: {y: true, z: false,w: false, x: false}, output: true},
-    {input: {y: false, z: false,w: false, x: false}, output: true},
-    ], components: ["and", "not", "or"]
-    
-});
-const refreshButton = document.getElementById('refreshButton');
-  refreshButton.addEventListener('click', function() {
-    location.reload();
-  });
-
-exer.on('ready', function() {
-
-  const componentUsage = {
-    and: 0,
-    not: 0,
-    or: 0,
-  };
-
-
-exer.on('componentAdded', function(component) {
-  const componentName = component.name;
-  if (componentUsage.hasOwnProperty(componentName)) {
-    componentUsage[componentName]++;
-    updateComponentCounter(componentName);
-  }
-});
-function updateComponentCounter(componentName) {
-  const counterElement = document.getElementById(`${componentName}Counter`);
-  if (counterElement) {
-    counterElement.textContent = componentUsage[componentName];
-  }
-}
-});
-</script>
+<script src="./script.js"></script>
 </body>
 </html>
