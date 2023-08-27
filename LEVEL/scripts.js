@@ -1,15 +1,35 @@
-
-const startTime = new Date().getTime();
-  // Update the counter every second
-var elapsedTime;
-setInterval(() => {
-const currentTime = new Date().getTime();
-elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
-document.getElementById('counter').textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
-}, 100); // Update every 0.1 second (100 milliseconds)
-
-
 const number = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
+var elapsedTime = 0;
+function checklevel(level){
+  return level.levelno == number
+}
+
+
+const url0 = "http://127.0.0.1:5000/api/users/"+localStorage.username
+const response0 = fetch(url0,{
+    method: "Get", // *GET, POST, PUT, DELETE, etc.
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "include", // include, *same-origin, omit
+    mode: "cors", // no-cors, *cors, same-origin
+    headers: {
+      "Content-Type": "application/json"
+      //"Access-Control-Allow-Origin":"http://127.0.0.1:5000"
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "manual", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    //body: JSON.stringify(data), // body data
+}).catch((error) => {
+    console.log(error);
+}).then((response) => response.json()).then((data) => {
+    elapsedTime = data.levels.find(checklevel).time;
+    setInterval(() => {
+    elapsedTime = elapsedTime+0.1; // Convert to seconds
+    document.getElementById('counter').textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
+    }, 100); // Update every 0.1 second (100 milliseconds)
+})
+
+
 var exer;
 //console.log(number)
 const url = "http://127.0.0.1:5000/api/level/"+number
@@ -65,15 +85,16 @@ const response = fetch(url,{
       exer.grade(function(feedback) {
       new CircuitExerciseFeedback(exer.options, feedback, {element: $("#feedback")});
           if(feedback.success){
+            const solveTime = elapsedTime;
             alert("Level completed successfully")
             //send time to db;
-            const url = "localhost:5000/api/users/"+localStorage.username;
+            const url = "http://127.0.0.1:5000/api/users/"+localStorage.username;
             const data = {
                 'levels':[
                   {
                     'levelno': number,
                     'done':true,
-                    'time':elapsedTime.toFixed(1)
+                    'time':solveTime.toFixed(1)
                   }
                 ]  
             }
@@ -93,10 +114,9 @@ const response = fetch(url,{
               body: JSON.stringify(data), // body data
             }).catch((error) => {
               console.log(error);
-            }).then((response) => response.json.then((data) => {
-              console.log(response.status);
-            }))
+            }).then((response) => {
               window.location.href = 'Levelpage.html';            
+            })
           }
       });
   });
@@ -104,6 +124,39 @@ const response = fetch(url,{
   const resetButton = document.getElementById('resetButton');
   resetButton.addEventListener('click', function() {
   exer.reset();
+  });
+
+  const exitButton = document.getElementById('exitButton');
+  exitButton.addEventListener('click', function() {
+    const url = "http://127.0.0.1:5000/api/users/"+localStorage.username;
+    const data = {
+        'levels':[
+          {
+            'levelno': number,
+            'done':false,
+            'time':elapsedTime.toFixed(1)
+          }
+        ]  
+    }
+    //console.log(data);
+    const response = fetch(url,{
+      method: "Put", // *GET, POST, PUT, DELETE, etc.
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "include", // include, *same-origin, omit
+      mode: "cors", // no-cors, *cors, same-origin
+      headers: {
+        "Content-Type": "application/json"
+        //"Access-Control-Allow-Origin":"http://127.0.0.1:5000"
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: "manual", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data), // body data
+    }).catch((error) => {
+      console.log(error);
+    }).then((response) => {
+      window.location.href = 'Levelpage.html';   
+    })
   });
 
   // const submitbutton = document.getElementById('submitfinal');

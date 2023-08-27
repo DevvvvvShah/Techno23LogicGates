@@ -53,9 +53,17 @@ exports.getUsers = async (req, res) => {
 exports.updateUsers = async (req, res) => {
   try {
     const level = req.body.levels[0];
-    console.log(level.levelno)
     const users = await User.updateOne({username: req.params.name, 'levels.levelno': level.levelno },
     {'$set':{'levels.$.done':level.done,'levels.$.time':level.time}});
+    res.status(201).json(users);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
+
+exports.getUserByName = async (req, res) => {
+  try {
+    const users = await User.findOne({username: req.params.name});
     res.status(201).json(users);
   } catch (error) {
     res.status(400).json({ message: error.message });
