@@ -723,6 +723,7 @@
   logicproto.andComponent = function(options) {
     var comp = new CircuitAndComponent(this, options);
     this._components.push(comp);
+    // console.log("ye chal raha hia",this._components)
     return comp;
   };
   logicproto.nandComponent = function(options) {
@@ -784,10 +785,24 @@
     return comp;
   };
   logicproto.removeComponent = function(comp) {
-    var index = this._components.indexOf(comp);
-    if (index !== -1) {
-      this._components.splice(index, 1);
-      comp.remove();
+    // console.log("Remove: ye bhi chal raha hai",comp)
+    // var index = this._components.indexOf(comp);
+    // var index = this._components.findIndex(function(component) {
+    //   return component._componentName === comp;
+    // });
+    var lastIndex = -1;
+    for (var i = this._components.length - 1; i >= 0; i--) {
+      if (this._components[i]._componentName === comp) {
+        lastIndex = i;
+        break; // Stop the loop once the last occurrence is found
+      }
+    }   
+    console.log("Last Index",lastIndex)
+    if (lastIndex !== -1) {
+      // console.log("yaha aa gye")
+      // comp.remove();
+      this._components[lastIndex].remove();
+      this._components.splice(lastIndex, 1);
     }
   };
   logicproto.components = function() {
@@ -954,6 +969,8 @@
     this.buttonPanel = $buttonPanel;
   };
   editorproto.initToolbar = function () {
+    const self = this;
+
     var $buttonPanel = this.buttonPanel,
         compOptions = {removeAllowed: true};
     $(".addnot", $buttonPanel).click(function () {
@@ -963,6 +980,8 @@
     }.bind(this));
     $(".addand", $buttonPanel).click(function () {
       var comp = this.circuit.andComponent(compOptions);
+      // console.log(this)
+      // console.log(this.circuit._components)
       this.element.trigger("lechef-circuit-changed");
       this.setInteractive(comp);
     }.bind(this));
@@ -1095,38 +1114,11 @@
       addSubmit: true}, options);
     this.lang = this.options.lang || "en";
     this.element = this.options.element;
-    this.events = {
-      componentAdded: [],
-      // Define other events here
-    };
-    this.on = function (eventName, callback) {
-      console.log('Adding event listener for:', eventName);
-      if (this.events[eventName]) {
-        console.log("if ke andar");
-        // console.log(callback);
-        // this.events[eventName].push(callback);
-        this.addComponent(callback);
-      }
-    };
-  
-    this.trigger = function (eventName, eventData) {
-      console.log("trigger");
-      if (this.events[eventName]) {
-        console.log("yaha bhi aa gye");
-        this.events[eventName].forEach(function (callback) {
-          callback(eventData);
-        });
-      }
-    };
-    this.addComponent = function (component) {
-      // Logic to add component...
-      console.log("hiii");
-      this.trigger('componentAdded', { component: component });
-    };
     this._init();
   };
   var exerproto = CircuitExercise.prototype;
   exerproto._init = function() {
+    // console.log("yaha aa raha hai")
     this.element.html(this.options.template);
     this.editor = new CircuitEditor($.extend({}, this.options, {element: this.element.find(".lechef-circuit"),
       buttonPanelElement: this.element.find(".lechef-buttonpanel")}));
@@ -1172,6 +1164,7 @@
     }
   };
   exerproto.reset = function() {
+    // console.log(this._init)
     this._init();
   };
   exerproto.grade = function (callback) {
