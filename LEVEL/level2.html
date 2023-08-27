@@ -232,43 +232,27 @@
         }   
       }
 
-      function andIncrement() {
-        if (componentUsage["and"] < maxComponentUsage["and"]) {
-          // console.log(componentUsage["and"]);
-          componentUsage["and"]++;
-          // console.log(componentUsage);
-          updateComponentCounter("and");
-          // for (components in componentUsage) {
-          //   console.log("hggfyk :  ", componentUsage[components]);
-          // }
-        } else {
-          // If usage limit is reached, you can show an alert or take appropriate action
-          alert(`Maximum allowed usage for and reached.`);
-          exer.editor.circuit.removeComponent("and");
-        }
-      }
-      
-      function notIncrement() {
-        if (componentUsage["not"] < maxComponentUsage["not"]) {
+      function gateIncrement(comp) {
+        if (componentUsage[comp] < maxComponentUsage[comp]) {
           // console.log(componentUsage["not"]);
-          componentUsage["not"]++;
-          updateComponentCounter("not");
+          componentUsage[comp]++;
+          updateComponentCounter(comp);
         } else {
           // If usage limit is reached, you can show an alert or take appropriate action
-          alert(`Maximum allowed usage for not reached.`);
-          exer.editor.circuit.removeComponent("not");
+          alert(`Maximum allowed usage for ${comp} reached.`);
+          exer.editor.circuit.removeComponent(comp);
         }
       }
       var $buttonPanel = document.querySelectorAll(".lechef-buttonpanel");
       const self = this;
       $(".addand", $buttonPanel).click(
         function () {
-          andIncrement();
+          gateIncrement("and");
         }
       );
       $(".addnot", $buttonPanel).click(
         function () {
-          notIncrement();
+          gateIncrement("not");
         }.bind(this)
       );
       // exer.on('componentAdded', function (components) {
