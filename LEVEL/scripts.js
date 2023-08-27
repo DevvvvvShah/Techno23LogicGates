@@ -49,12 +49,19 @@ const response = fetch(url,{
 }).catch((error) => {
     console.log(error);
 }).then((response) => response.json()).then((data) => {
-  console.log(response.status);
   const levels = data;
-  //console.log(level[1].constructors);
   const level = levels[0];
   const table = level.truthTable;
-  const components = level.constructors;
+  const constructors = level.constructors;
+  var constructorDict1 = {};
+  var constructorDict2 = {};
+  constructors.forEach(constructor => {
+    constructorDict1[constructor.name] = constructor.amount;
+  });
+  constructors.forEach(constructor => {
+    constructorDict2[constructor.name] = 0;
+  });
+  const constr = constructors.map(constructor => constructor.name)
   const input = Object.keys(table[0].input);
   var thead = "<thead>";
   thead+='<tr>';
@@ -78,7 +85,7 @@ const response = fetch(url,{
   tbody+='</tbody>';
   document.getElementById('tablebody').innerHTML = tbody;
   var exer = new CircuitExercise({element: $("#design-example"), input: input, output: ["g"],
-    grading: table, components: components,addSubmit:false });
+    grading: table, components: constr,addSubmit:false });
   
     $("#submitfinal").click(function(event){
       event.preventDefault();
@@ -86,6 +93,7 @@ const response = fetch(url,{
       new CircuitExerciseFeedback(exer.options, feedback, {element: $("#feedback")});
           if(feedback.success){
             const solveTime = elapsedTime;
+            // a screen popup instead of alert
             alert("Level completed successfully")
             //send time to db;
             const url = "http://127.0.0.1:5000/api/users/"+localStorage.username;
@@ -98,7 +106,7 @@ const response = fetch(url,{
                   }
                 ]  
             }
-            console.log(data);
+            //console.log(data);
             const response = fetch(url,{
               method: "Put", // *GET, POST, PUT, DELETE, etc.
               cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -121,10 +129,6 @@ const response = fetch(url,{
       });
   });
   
-  const resetButton = document.getElementById('resetButton');
-  resetButton.addEventListener('click', function() {
-  exer.reset();
-  });
 
   const exitButton = document.getElementById('exitButton');
   exitButton.addEventListener('click', function() {
@@ -159,81 +163,84 @@ const response = fetch(url,{
     })
   });
 
-  // const submitbutton = document.getElementById('submitfinal');
-  // submitbutton.addEventListener('click',function(){
-  //     const feed = document.getElementById('feedback');
-  //     // feed.style.display = 'flex';
-  //     exer.grade(function(feedback) {
-  //     new CircuitExerciseFeedback(exer.options, feedback,{element: $("#feedback")});
-  //         if(feedback.success){
-  //             alert("Level completed successfully")
-  //             //send time to db;
-  //             const url = "localhost:5000/api/users/"+localStorage.username;
-  //             const levelnum = "level"+number;
-  //             const data = {
-  //               levelnum:{
-  //                 'done':true,
-  //                 'time':elapsedTime.toFixed(1)
-  //               }
-  //             }
-  //             const response = fetch(url,{
-  //               method: "Put", // *GET, POST, PUT, DELETE, etc.
-  //               cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-  //               credentials: "include", // include, *same-origin, omit
-  //               mode: "cors", // no-cors, *cors, same-origin
-  //               headers: {
-  //                 "Content-Type": "application/json"
-  //                 //"Access-Control-Allow-Origin":"http://127.0.0.1:5000"
-  //                 // 'Content-Type': 'application/x-www-form-urlencoded',
-  //               },
-  //               redirect: "manual", // manual, *follow, error
-  //               referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-  //               body: JSON.stringify(data), // body data
-  //             }).catch((error) => {
-  //               console.log(error);
-  //             })
-  //             window.location.href = 'Levelpage.html'; 
-  //         }
-  //     });
-  // });
-  
-  })
+  const componentUsage = constructorDict2;
+  const maxComponentUsage = constructorDict1;
+  //console.log(maxComponentUsage)
 
-
-
-let componentUsage = {
-    and: 0,
-    not: 0,
-    or: 0,
-  };
-
-const maxComponentUsage = {
-    and: 2, // Maximum allowed usage for 'and' component
-    not: 1, // Maximum allowed usage for 'not' component
-    // Add more components and their limits as needed
-};
-
-
-exer.on('componentAdded', function (components) {
-    const componentName = components.name;
-    console.log(components);
-    console.log("andar...");
-    if (componentUsage.hasOwnProperty(componentName)) {
-        if (componentUsage[componentName] < maxComponentUsage[componentName]) {
-        
-        componentUsage[componentName]++;
-        updateComponentCounter(componentName);
-        } else {
-        // If usage limit is reached, you can show an alert or take appropriate action
-        alert(`Maximum allowed usage for ${componentName} reached.`);
-        exer.removeComponent(components);
-        }
+  const resetButton = document.getElementById("resetButton");
+  resetButton.addEventListener("click", function () {
+    for (components in componentUsage) {
+      componentUsage[components] = 0;
     }
-    });
+    for (components in componentUsage) {
+      updateComponentCounter(components);
+    }
+    reset();
+  });
 
-    function updateComponentCounter(componentName) {
-    const counterElement = document.getElementById(`${componentName}Counter`);
+  function reset(){
+    for (var i = exer.editor.circuit._components.length - 1; i >= 3; i--) {
+      exer.editor.circuit._components[i].remove();
+    }   
+  }
+
+  function gateIncrement(comp) {
+    if (componentUsage[comp] < maxComponentUsage[comp]) {
+      componentUsage[comp]++;
+      //console.log(componentUsage)
+      updateComponentCounter(comp);
+    } else {
+      // If usage limit is reached, you can show an alert or take appropriate action
+      alert(`Maximum allowed usage for ${comp} reached.`);
+      exer.editor.circuit.removeComponent(comp);
+    }
+  }
+  var $buttonPanel = document.querySelectorAll(".lechef-buttonpanel");
+  const self = this;
+  //console.log($buttonPanel);
+  $(".addand", $buttonPanel).click(
+    function () {
+      gateIncrement("and");
+    }
+  );
+  $(".addnot", $buttonPanel).click(
+    function () {
+      gateIncrement("not");
+    }.bind(this)
+  );
+  $(".addor", $buttonPanel).click(
+    function () {
+      gateIncrement("or");
+    }.bind(this)
+  );
+  $(".addadd", $buttonPanel).click(
+    function () {
+      gateIncrement("or");
+    }.bind(this)
+  );
+  // exer.('componentAdded', function (components) {
+  //     const componentName = components.name;
+  //     console.log(components);
+  //     console.log("andar...");
+  //     if (componentUsage.hasOwnProperty(componentName)) {
+  //       if (componentUsage[componentName] < maxComponentUsage[componentName]) {
+
+  //         componentUsage[componentName]++;
+  //         updateComponentCounter(componentName);
+  //       } else {
+  //         // If usage limit is reached, you can show an alert or take appropriate action
+  //         alert(`Maximum allowed usage for ${componentName} reached.`);
+  //         exer.removeComponent(components);
+  //       }
+  //     }
+  //   });
+
+  function updateComponentCounter(componentName) {
+    const counterElement = document.getElementById(
+      `${componentName}Counter`
+    );
     if (counterElement) {
-        counterElement.textContent = componentUsage[componentName];
+      counterElement.textContent = componentUsage[componentName];
     }
-    }
+  } 
+  })

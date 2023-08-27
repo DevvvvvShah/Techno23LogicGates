@@ -11,10 +11,17 @@ const levelSchema = new schema({
   },
   //maybe dict for constructors and truth table, but this should work too
   constructors:[   //list for now
+  
         {
-          //type:mongoose.Schema.Types.ObjectId, ref: 'Constructor'
-          type:String
+            //type:mongoose.Schema.Types.ObjectId, ref: 'Constructor'
+            name:{
+            type:String
+            },
+            amount:{
+              type:Number
+            }
         }
+      
   ],
   truthTable:[
     {
