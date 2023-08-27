@@ -18,6 +18,7 @@ router.post('/login',userController.login);
 
 router.post('/level', levelController.setLevel);
 router.get('/level', levelController.getLevel);
+router.get('/level/:number', levelController.getLevelByNumber);
 
 
 router.post('/constructor',upload.single("img"), constructorController.setConstructor);
