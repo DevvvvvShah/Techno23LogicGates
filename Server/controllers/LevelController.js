@@ -1,6 +1,5 @@
-const Constructor = require('../Models/Constructor');
 const Level = require('../Models/level');
-const TruthLine = require('../Models/truthLine');
+// const TruthLine = require('../Models/trthLine');
 exports.getLevel = async (req, res) => {
   try {
     const level = await Level.find(req.body);

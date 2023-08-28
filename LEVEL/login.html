@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="login_css.css">
+</head>
+<body>
+  
+  <div class="background-video">
+    <video autoplay muted loop>
+      <source src="background-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <form id="loginForm">
+    <label for="username"><b>Username:</b></label>
+    <input type="text" id="username" name="username" required><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    <button id="submit" type="button">Login</button>
+  </form>
+
+  <script src="login.js"></script>
+</body>
+</html>
