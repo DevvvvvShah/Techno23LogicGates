@@ -7,18 +7,38 @@
   </head>
 
   <body>
-    /<style>
+    <style>
       * {
         box-sizing: border-box;
       }
       html,
+      #level {
+        text-align: center; 
+        margin-top: 0px; 
+      }
+
+      #level h1 {
+        font-size: 38px; 
+        position: relative; 
+        display: inline-block; 
+      }
+
+      #level h1::after {
+        content: '';
+        position: absolute;
+        bottom: -8px; 
+        left: 0;
+        width: 100%;
+        height: 2px; 
+        background-color: #4285f4; 
+      }      
       body {
         height: 100%;
         width: 100%;
         margin: 0;
       }
       .circuit-exercise-container {
-        height: 300px;
+        height: 800px;
         width: 100%;
         border: none;
         padding: 0;
@@ -52,7 +72,7 @@
       }
 
       .container {
-        max-width: 800px;
+        max-width: 100px;
         margin: 0 auto;
         padding: 20px;
         background-color: #ffffff;
@@ -66,47 +86,85 @@
       }
 
       table {
-        width: 100%;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         border-collapse: collapse;
-        margin-bottom: 20px;
+        margin-bottom: 80px;
+        
       }
 
       th,
       td {
-        padding: 10px;
+        margin: 30px;
+        padding: 30px;
         text-align: center;
-        border: 1px solid #ccc;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        border: 2px solid #3882cd;
       }
 
-      th {
-        background-color: #f2f2f2;
-      }
+      
 
       button {
         padding: 10px 20px;
         background-color: #4285f4;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 50px;
         cursor: pointer;
+        margin-bottom: auto;
       }
 
       .circuit-container {
-        position: relative;
-        margin-top: 20px;
-        background-color: #eee;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      margin-top: 100px; 
+      margin-bottom: 100px;;
+      background-color: #eee;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+
+      #componentUsage-wrapper {
+      position: absolute;
+      top: 100px;
+      right: 20px;
+      border: 2px solid #4285f4;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      text-align: center;
       }
 
       #componentUsage {
-        margin-top: 20px;
+      margin: 0;
+      }
+
+      
+      #counter-wrapper {
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      border: 2px solid #4285f4;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+
+      #counter {
+        margin: 0;
       }
 
       #componentUsage h3 {
         font-size: 18px;
-        margin-bottom: 10px;
+        margin-bottom: 0px;
+        
+        margin-right: 2px;
       }
 
       .component-counter {
@@ -121,8 +179,11 @@
         font-weight: bold;
       }
     </style>
-    <h1>Circuit Exercise Example</h1>
-    <div>Construct a circuit for this truth table:</div>
+    <div id = "level">
+      <h1>Level 1</h1>
+    </div>
+    
+    
     <table>
       <thead>
         <tr>
@@ -154,8 +215,20 @@
         </tr>
       </tbody>
     </table>
-
-    <p id="counter">Elapsed time: 0 seconds</p>
+    
+    <div id="counter-wrapper">
+      <p id="counter">Elapsed time: 0 seconds</p>
+    </div>
+    <div id="componentUsage-wrapper">
+    <div id="componentUsage">
+      <h3>Component Usage:</h3>
+      <ul>
+        <ul>AND: <span id="andCounter">0</span></ul>
+        <ul>NOT: <span id="notCounter">0</span></ul>
+        <ul>OR: <span id="orCounter">0</span></ul>
+      </ul>
+    </div>
+    </div>
     <script>
       // Get the current time when the page loads
       const startTime = new Date().getTime();
@@ -169,20 +242,13 @@
         ).textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
       }, 100); // Update every 0.1 second (100 milliseconds)
     </script>
+
     <button id="resetButton">Reset</button>
 
     <div style="position: relative">
       <div class="circuit-exercise-container"></div>
     </div>
 
-    <div id="componentUsage">
-      <h3>Component Usage:</h3>
-      <ul>
-        <li>AND: <span id="andCounter">0</span></li>
-        <li>NOT: <span id="notCounter">0</span></li>
-        <li>OR: <span id="orCounter">0</span></li>
-      </ul>
-    </div>
 
     <script src="../libs/jquery-2.1.1.min.js"></script>
     <script src="../libs/jquery-ui-1.11.min.js"></script>
