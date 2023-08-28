@@ -16,14 +16,14 @@
   }
   .header-container {
     background-color: rgba(117, 23, 189, 0.9); 
-    padding: 20px;
+    padding: 3px;
     border-radius: 30px;
     text-align: center;
     width: auto; 
-    margin: 20px 20px 30px 0;
+    margin: 20px 20px 20px 0;
     position: absolute;
     left: 20px;
-    top: 20px;
+    top: 20px; 
   }
   .button-container {
     display: flex;
@@ -35,14 +35,14 @@
   .level-button-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: right;
     text-align: center;
     margin: 20px 0;
   }
 
   .level-button-row {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     margin-bottom: 10px;
   }
@@ -63,10 +63,6 @@
     background-color: #78319c;
     transform: scale(1.05);
     filter: brightness(1.2);
-  }
-  .level-button.done{
-    background-color: green;
-    cursor: pointer;
   }
 
 
@@ -121,17 +117,29 @@
   </div>
 
   <div class="button-container">
-    <h1>Choose  a level </h1>
-    <button class="level-button" id="level1"  onclick="showModal(1)">Level 1</button>
-    <button class="level-button" id="level2"  onclick="showModal(2)">Level 2</button>
-    <button class="level-button" id="level3"  onclick="showModal(3)">Level 3</button>
-    <button class="level-button" id="level4"  onclick="showModal(4)">Level 4</button>
-    <button class="level-button" id="level5"  onclick="showModal(5)">Level 5</button>
-    <button class="level-button" id="level6"  onclick="showModal(6)">Level 6</button>
-    <button class="level-button" id="level7"  onclick="showModal(7)">Level 7</button>
-    <button class="level-button" id="level8"  onclick="showModal(8)">Level 8</button>
-    <button class="level-button" id="level9"  onclick="showModal(9)">Level 9</button>
-    <button class="level-button" id="level10"  onclick="showModal(10)">Level 10</button>
+   
+    <div class="level-button-container">
+      <div class="level-button-row">
+        <button class="level-button" onclick="showModal(1)">Level 1</button>
+        <button class="level-button" onclick="showModal(2)">Level 2</button>
+        <button class="level-button" onclick="showModal(3)">Level 3</button>
+      </div>
+      <div class="level-button-row">
+        <button class="level-button" onclick="showModal(4)">Level 4</button>
+        <button class="level-button" onclick="showModal(5)">Level 5</button>
+      </div>
+    </div>
+    <div class="level-button-container">
+      <div class="level-button-row">
+        <button class="level-button" onclick="showModal(6)">Level 6</button>
+        <button class="level-button" onclick="showModal(7)">Level 7</button>
+        <button class="level-button" onclick="showModal(8)">Level 8</button>
+      </div>
+      <div class="level-button-row">
+        <button class="level-button" onclick="showModal(9)">Level 9</button>
+        <button class="level-button" onclick="showModal(10)">Level 10</button>
+      </div>
+    </div>
   </div>
 
 
@@ -146,7 +154,23 @@
   </div>
 
 
-  <script src="./levelControl.js"></script>
+  <script>
+    function showModal(level) {
+      const modal = document.getElementById('myPop');
+      modal.style.display = 'flex';
+    }
+
+    function closeModal(confirm) {
+      const modal = document.getElementById('myPop');
+      modal.style.display = 'none';
+
+      if (confirm) {
+        alert('proceeding.....');
+      } else {
+        alert('back to level');
+      }
+    }
+  </script>
 
 </body>
 </html>
