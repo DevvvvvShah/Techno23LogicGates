@@ -1,5 +1,8 @@
 import React, {useState} from "react";
+import {Component} from 'react';
+
 import {useNavigate} from 'react-router-dom';
+import './login.css';
 export const Login = () => {
     const navigate = useNavigate();
     const [reg_no, setReg_no] = useState('');
@@ -36,12 +39,15 @@ export const Login = () => {
 
     return ( 
         <div className="auth-form-container">
-            <h2 >login</h2>
+            <video autoPlay loop muted className="background-video">
+                <source src="client\src\Pre_comp_1_3.mp4" type="video/mp4" />
+             </video>
+            <h1 >Login</h1>
             <form className="login-form" >
-                <label htmlFor="reg_no">reg_no</label>
-                <input value = {reg_no} onChange= {(e)=> setReg_no(e.target.value)}type="reg_no" placeholder="mail..." id = "reg_no" name = "reg_no" />
-                <label htmlFor="password">password</label>
-                <input value = {password} onChange= {(e)=> setPassword(e.target.value)} type="password" placeholder="***" id = "password" name = "password" />
+                <label htmlFor="Reg_no">Registration number</label>
+                <input value = {reg_no} onChange= {(e)=> setReg_no(e.target.value)}type="reg_no" placeholder="Enter the registration number" id = "reg_no" name = "reg_no" />
+                <label htmlFor="password">Password</label>
+                <input value = {password} onChange= {(e)=> setPassword(e.target.value)} type="password" placeholder="*********" id = "password" name = "password" />
                 <button type="button" onClick={handleClick}>Login</button>
             </form>
         </div>
