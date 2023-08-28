@@ -55,8 +55,14 @@ const response = fetch(url,{
   const constructors = level.constructors;
   var constructorDict1 = {};
   var constructorDict2 = {};
+  const counterlist = document.getElementById("counterlist");
+  var list = "";
   constructors.forEach(constructor => {
     constructorDict1[constructor.name] = constructor.amount;
+    var count = document.createElement('li');
+    count.innerHTML = `${constructor.name.toUpperCase()} : `+`<span id="${constructor.name+"Counter"}">0</span> out of ${constructor.amount}` ;
+    counterlist.appendChild(count);
+    
   });
   constructors.forEach(constructor => {
     constructorDict2[constructor.name] = 0;
