@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logical Circuit Exercise</title>
+  <link rel="stylesheet" href="../build/lechef.css" />
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+/<style>
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.circuit-container {
+  position: relative;
+  margin-top: 20px;
+  background-color: #eee;
+  padding: 20px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#componentUsage {
+  margin-top: 20px;
+}
+
+#componentUsage h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.component-counter {
+  display: inline-block;
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.component-counter span {
+  font-weight: bold;
+}
+
+#feedback {
+  display: flex;
+  z-index: 10;
+  position: absolute;
+}
+
+#design-example{
+  margin-top: 20px;
+}
+
+</style>
+<button id="exitButton">Exit</button>
+<h1>Circuit Exercise Example</h1>
+<div>Construct a circuit for this truth table:</div>
+<table>
+  <thead id="tablehead">
+  </thead>
+  <tbody id="tablebody">
+  </tbody>
+</table>
+
+<p id="counter">Elapsed time: 0 seconds</p>
+
+<button id="resetButton">Reset</button>
+<button id="submitfinal">Submit</button>
+
+<div id="feedback" class="circuit-container"></div>
+<div id="design-example" class="circuit-container"></div>
+
+
+<div id="componentUsage">
+    <h3>Component Usage:</h3>
+    <ul>
+      <li>AND: <span id="andCounter">0</span></li>
+      <li>NOT: <span id="notCounter">0</span></li>
+    </ul>
+  </div>
+  
+<script src="../libs/jquery-2.1.1.min.js"></script>
+<script src="../libs/jquery-ui-1.11.min.js"></script>
+<script src="../libs/snap.svg.js"></script>
+<script src="../build/lechef.js"></script>
+<script src="./scripts.js"></script>
+</body>
+</html>

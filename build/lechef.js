@@ -378,6 +378,7 @@
 
   var CircuitAndComponent = function(circuit, options) {
     this._componentName = "and";
+    //var opts = $.extend({outputCount: 2}, options);
     this.init(circuit, options);
   };
   Utils.extend(CircuitAndComponent, CircuitComponent);
@@ -398,7 +399,7 @@
     for (var i = 0; i < inputs.length; i++) {
       result = result && inputs[i];
     }
-    return [result];
+    return [result, 1];
   };
 
   var CircuitNandComponent = function(circuit, options) {
@@ -538,6 +539,62 @@
     return [( in1 && !in2 ) || ( !in1 && in2 )];
   };
 
+  var CircuitAddComponent = function(circuit, options) {
+    this._componentName = "add";
+    var opts = $.extend({outputCount: 2}, options);
+    this.init(circuit, opts);
+  };
+  Utils.extend(CircuitAddComponent, CircuitComponent);
+  CircuitAddComponent.prototype.drawComponent = function() {
+    var w = this.element.outerWidth(),
+        h = this.element.outerHeight();
+    // output line
+    this._snap.line(0.7*w, 0.5*h, w, 0.5*h);
+    // output line downward
+    this._snap.line(0.45*w, 0.8*h, 0.45*w, h);
+    // the component "body"
+    this._snap.rect(0.2*w, 0.2*h, 0.5*w, 0.6*h);
+
+    this._positionInputHandles(true);
+    this._outputElements[0].css({"top": 0.5*h - 0.5*this._outputElements[0].outerHeight(),
+                                  "right": -0.5*this._outputElements[0].outerWidth()});
+    this._outputElements[1].css({"bottom": -0.5*this._outputElements[1].outerHeight(),
+                                  "left": 0.45*w - 0.5*this._outputElements[1].outerWidth()});
+  };
+  CircuitAddComponent.prototype.calculateOutput = function(inputs) {
+    var in1 = inputs[0],
+        in2 = inputs[1];
+    return [( in1 && !in2 ) || ( !in1 && in2 ), in1&&in2];
+  };
+
+
+  var CircuitOnesComponent = function(circuit, options) {
+    this._componentName = "ones";
+    var opts = $.extend({outputCount: 2}, options);
+    this.init(circuit, opts);
+  };
+  Utils.extend(CircuitOnesComponent, CircuitComponent);
+  CircuitOnesComponent.prototype.drawComponent = function() {
+    var w = this.element.outerWidth(),
+        h = this.element.outerHeight();
+    // output line
+    this._snap.line(0.8*w, 0.65*h, w, 0.65*h);
+    this._snap.line(0.8*w, 0.35*h, w, 0.35*h);
+    // the component "body"
+    this._snap.circle(0.5*w,0.5*h,0.3*w);
+
+    this._positionInputHandles(true);
+    this._outputElements[0].css({"top": 0.35*h - 0.5*this._outputElements[0].outerHeight(),
+                                  "right": -0.5*this._outputElements[0].outerWidth()});
+    this._outputElements[1].css({"top": 0.65*h - 0.5*this._outputElements[0].outerHeight(),
+                                  "right": -0.5*this._outputElements[0].outerWidth()});
+  };
+  CircuitOnesComponent.prototype.calculateOutput = function(inputs) {
+    var in1 = inputs[0],
+        in2 = inputs[1];
+    return [!in1, !in2];
+  };
+
   var CircuitEqvComponent = function(circuit, options) {
     this._componentName = "eqv";
     this.init(circuit, options);
@@ -630,7 +687,7 @@
     var opts = $.extend({outputCount: 2}, options);
     this._componentName = "halfadder";
     this.init(circuit, opts);
-    this.element.find(".lechef-label").html("&frac12;");
+    //this.element.find(".lechef-label").html("&frac13;");
   };
   Utils.extend(CircuitHalfAdderComponent, CircuitComponent);
   CircuitHalfAdderComponent.prototype.drawComponent = function() {
@@ -697,6 +754,8 @@
     CircuitOrComponent: CircuitOrComponent,
     CircuitNorComponent: CircuitNorComponent,
     CircuitXorComponent: CircuitXorComponent,
+    CircuitOnesComponent: CircuitOnesComponent,
+    CircuitAddComponent: CircuitAddComponent,
     CircuitEqvComponent: CircuitEqvComponent,
     CircuitInputComponent: CircuitInputComponent,
     CircuitOutputComponent: CircuitOutputComponent,
@@ -721,6 +780,7 @@
   logicproto.andComponent = function(options) {
     var comp = new CircuitAndComponent(this, options);
     this._components.push(comp);
+    // console.log("ye chal raha hia",this._components)
     return comp;
   };
   logicproto.nandComponent = function(options) {
@@ -745,6 +805,16 @@
   };
   logicproto.xorComponent = function(options) {
     var comp = new CircuitXorComponent(this, options);
+    this._components.push(comp);
+    return comp;
+  };
+  logicproto.onesComponent = function(options) {
+    var comp = new CircuitOnesComponent(this, options);
+    this._components.push(comp);
+    return comp;
+  };
+  logicproto.AddComponent = function(options) {
+    var comp = new CircuitAddComponent(this, options);
     this._components.push(comp);
     return comp;
   };
@@ -782,10 +852,24 @@
     return comp;
   };
   logicproto.removeComponent = function(comp) {
-    var index = this._components.indexOf(comp);
-    if (index !== -1) {
-      this._components.splice(index, 1);
-      comp.remove();
+    // console.log("Remove: ye bhi chal raha hai",comp)
+    // var index = this._components.indexOf(comp);
+    // var index = this._components.findIndex(function(component) {
+    //   return component._componentName === comp;
+    // });
+    var lastIndex = -1;
+    for (var i = this._components.length - 1; i >= 0; i--) {
+      if (this._components[i]._componentName === comp) {
+        lastIndex = i;
+        break; // Stop the loop once the last occurrence is found
+      }
+    }   
+    console.log("Last Index",lastIndex)
+    if (lastIndex !== -1) {
+      // console.log("yaha aa gye")
+      // comp.remove();
+      this._components[lastIndex].remove();
+      this._components.splice(lastIndex, 1);
     }
   };
   logicproto.components = function() {
@@ -952,6 +1036,8 @@
     this.buttonPanel = $buttonPanel;
   };
   editorproto.initToolbar = function () {
+    const self = this;
+
     var $buttonPanel = this.buttonPanel,
         compOptions = {removeAllowed: true};
     $(".addnot", $buttonPanel).click(function () {
@@ -961,6 +1047,8 @@
     }.bind(this));
     $(".addand", $buttonPanel).click(function () {
       var comp = this.circuit.andComponent(compOptions);
+      // console.log(this)
+      // console.log(this.circuit._components)
       this.element.trigger("lechef-circuit-changed");
       this.setInteractive(comp);
     }.bind(this));
@@ -981,6 +1069,16 @@
     }.bind(this));
     $(".addxor", $buttonPanel).click(function () {
       var comp = this.circuit.xorComponent(compOptions);
+      this.element.trigger("lechef-circuit-changed");
+      this.setInteractive(comp);
+    }.bind(this));
+    $(".addones", $buttonPanel).click(function () {
+      var comp = this.circuit.onesComponent(compOptions);
+      this.element.trigger("lechef-circuit-changed");
+      this.setInteractive(comp);
+    }.bind(this));
+    $(".addadd", $buttonPanel).click(function () {
+      var comp = this.circuit.AddComponent(compOptions);
       this.element.trigger("lechef-circuit-changed");
       this.setInteractive(comp);
     }.bind(this));
@@ -1097,6 +1195,7 @@
   };
   var exerproto = CircuitExercise.prototype;
   exerproto._init = function() {
+    // console.log("yaha aa raha hai")
     this.element.html(this.options.template);
     this.editor = new CircuitEditor($.extend({}, this.options, {element: this.element.find(".lechef-circuit"),
       buttonPanelElement: this.element.find(".lechef-buttonpanel")}));
@@ -1142,6 +1241,7 @@
     }
   };
   exerproto.reset = function() {
+    // console.log(this._init)
     this._init();
   };
   exerproto.grade = function (callback) {

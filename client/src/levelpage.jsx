@@ -1,21 +1,24 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
-import js from './build/lechef'
-import useScript from './scriptimport';
-import './allcss.css'
-export  const levelpage = () => {
-    const refreshButton = document.getElementById('refreshButton');
+import {Helmet} from "react-helmet";
+import useScript from './hooks/useScripts';
+// import './allcss.css';
+import "./scriptimport";
+const Levelpage = () => {
+    // const refreshButton = document.getElementById('refreshButton');
     // refreshButton.addEventListener('click', function() {
     //     location.reload();
     // });
-
     return( 
     <div>
-        <script src="../libs/jquery-2.1.1.min.js"></script>
-        <script src="../libs/jquery-ui-1.11.min.js"></script>
-        <script src="../libs/snap.svg.js"></script>
-        <script src="../build/lechef.js"></script>
-        <script>{useScript}</script>
+        {/* <Helmet> */}
+            {/* <scripts src="./scriptimport.js"></scripts>
+            <scripts src="../public/libs/jquery-2.1.1.min.js"></scripts>
+            <scripts src="../public/libs/jquery-ui-1.11.min.js"></scripts>
+            <scripts src="../public/libs/snap.svg.js"></scripts>
+            <scripts src="../public/build/lechef.js"></scripts> */}
+        {/* </Helmet> */}
+        {/* <scripts src="./scriptimport.js"></scripts> */}
         <h1>Circuit Exercise Example</h1>
         <div>Construct a circuit for this truth table:</div>
             <table>
@@ -44,11 +47,8 @@ export  const levelpage = () => {
 
 
             <button id="refreshButton">Refresh</button>
-
-            <div style="position:relative;">
-            <div class="circuit-exercise-container"></div>
-            </div>
-
+            <div className='circuit-exercise-container'></div>
+            {/* <Levelpag/> */}
             <div id="componentUsage">
                 <h3>Component Usage:</h3>
                 <ul>
@@ -60,4 +60,4 @@ export  const levelpage = () => {
     </div>);
 }
  
-export default levelpage;
+export default Levelpage;
