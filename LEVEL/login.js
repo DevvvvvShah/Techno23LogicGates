@@ -26,7 +26,7 @@
         alert('Login successful!');
         localStorage.username = username;
         localStorage.password = password;
-        window.location.href = 'Levelpage.html';
+        window.location.href = '/levelpage';
       } else {
         alert('Login failed. Please check your credentials.');
       }
