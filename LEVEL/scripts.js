@@ -209,9 +209,11 @@ const response = fetch(url, {
     });
 
     function reset() {
-      for (var i = exer.editor.circuit._components.length - 1; i >= 3; i--) {
-        exer.editor.circuit._components[i].remove();
+      for (var i = exer.editor.circuit._components.length - 1; i > input.length; i--) {
+        exer.editor.circuit.removeComponent( exer.editor.circuit._components[i]._componentName);
+        //exer.editor.circuit._components[i].remove();
       }
+      console.log(exer.editor.circuit._components)
     }
 
     function gateIncrement(comp) {
@@ -243,7 +245,12 @@ const response = fetch(url, {
     );
     $(".addadd", $buttonPanel).click(
       function () {
-        gateIncrement("or");
+        gateIncrement("add");
+      }.bind(this)
+    );
+    $(".addtwos", $buttonPanel).click(
+      function () {
+        gateIncrement("twos");
       }.bind(this)
     );
     // exer.('componentAdded', function (components) {
