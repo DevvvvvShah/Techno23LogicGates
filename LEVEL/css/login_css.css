@@ -110,6 +110,7 @@ body {
   border: none;
   border-radius: 5px;
   align-items: center;
+  color: #fff;
 }
 
 ::placeholder{
