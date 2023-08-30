@@ -135,14 +135,13 @@ const response = fetch(url, {
           const data = {
             levels: [
               {
-                points: levelpoint,
+                points: 50,
                 levelno: number,
                 done: true,
                 time: solveTime.toFixed(1),
               },
             ],
           };
-          //console.log(data);
           const response = fetch(url, {
             method: "Put", // *GET, POST, PUT, DELETE, etc.
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

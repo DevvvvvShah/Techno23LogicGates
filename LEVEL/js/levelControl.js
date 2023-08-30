@@ -24,7 +24,7 @@ const response0 = fetch(url0, {
       const level = levels[index];
       if (level.done === true) {
         console.log(level.levelno);
-        points+=level.point;
+        points+=level.points;
         const button = document.getElementById(`level${level.levelno}`);
         button.classList.add("done");
         button.disabled = true;

@@ -54,7 +54,7 @@ exports.updateUsers = async (req, res) => {
   try {
     const level = req.body.levels[0];
     const users = await User.updateOne({username: req.params.name, 'levels.levelno': level.levelno },
-    {'$set':{'levels.$.done':level.done,'levels.$.time':level.time}});
+    {'$set':{'levels.$.done':level.done,'levels.$.time':level.time,'levels.$.points':level.points}});
     res.status(201).json(users);
   } catch (error) {
     res.status(400).json({ message: error.message });
