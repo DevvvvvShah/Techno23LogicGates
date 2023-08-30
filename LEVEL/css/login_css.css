@@ -68,12 +68,13 @@ body {
 
 .login-container {
   width: 300px;
-  height: 300px;
+  height: 370px;
   background-color: #222222;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
-  border: 1px #ffd700 ;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border: 5px solid rgba(234,216,154,255) ;
+  box-shadow: 0px 0px 15px #fac906;
   margin: 0 auto;
   margin-top: 5px;
   align-content: center;
@@ -82,36 +83,36 @@ body {
 }
 
 .login-header {
-  font-size: 24px;
-  font-weight: bold;
-  color: gold;
+  font-family: 'Black Ops One', cursive;
+  font-size: 36px;
+  color: #fac906;
   margin-bottom: 20px;
+
 }
 
 .login-input {
   background-color: #333333;
-  width: 100%;
-  padding: 10px 0px ;
+  width: 92%;
+  padding: 10px 10px 10px 5px;
   margin-bottom: 10px;
   margin-top: 30px;
-  margin-right: 10px;
-  border: none;
+  margin-right: 30px;
+  border: 0.5px solid rgba(234,216,154,255);
+  box-shadow: 0px 0px 5px #fac906 ;
   border-radius: 5px;
   align-items: center;
   color: #fff;
 }
 
-::placeholder{
-  padding: 10px;
-}
 
 .login-button {
   padding: 10px 20px;
-  background-color: #ffd700;
+  background-color: #fac906;
   color: #000;
   border: none;
   border-radius: 5px;
   margin-top: 50px;
+  font-family: 'Black Ops One', cursive;
   font-size: 19px;
   cursor: pointer;
   transition: background-color 0.3s;;
@@ -119,6 +120,6 @@ body {
 
 .login-button:hover {
   background-color: #000; 
-  color: #ffd700;
+  color: #fac906;
 }
 
