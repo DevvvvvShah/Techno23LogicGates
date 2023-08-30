@@ -4,7 +4,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 10;
-    background-image: url("bgp.jpg");
+    background-image: url("../images/bgp.jpg");
     background-size: cover;
   }
   .header-container {
