@@ -4,9 +4,16 @@ const schema = mongoose.Schema;
 // const TruthLine = require("./truthLine")
 
 const levelSchema = new schema({
+  name:{
+    type:String
+  },
   number:
   {
     required: true,
+    type: Number
+  },
+  points:{
+    required:true,
     type: Number
   },
   constructors:[   //list for now
