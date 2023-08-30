@@ -45,6 +45,15 @@ app.use(express.static(__dirname + "/../LEVEL"));
 
 app.get("/", (req, res) => {
   try {
+    res.sendFile(path.join(__dirname + "/../LEVEL/front_page.html"));
+  } catch (error) {
+    console.error("Error sending file:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/login", (req, res) => {
+  try {
     res.sendFile(path.join(__dirname + "/../LEVEL/login.html"));
   } catch (error) {
     console.error("Error sending file:", error);

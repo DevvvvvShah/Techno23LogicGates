@@ -76,6 +76,11 @@ body {
     text-align: left;
   }
 
+  div.image {
+    content:url("../images/techno_logo.png");
+    width: 190px;
+ }​
+ 
   .info-box p {
     font-weight: bold;
   }
