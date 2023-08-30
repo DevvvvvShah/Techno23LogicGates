@@ -17,7 +17,7 @@
 .lechef-value-false:before,.lechef-value-true:before,.lechef-value-false:before,.lechef-value-true:before,.lechef-value-unknown:before{display:block;position:absolute;top:-15px;font-size:1.2em}
 .lechef-output.lechef-value-false:before,.lechef-output.lechef-value-true:before,.lechef-output.lechef-value-unknown:before{right:-15px}
 .lechef-input.lechef-value-false:before,.lechef-input.lechef-value-true:before,.lechef-input.lechef-value-unknown:before{left:-15px}
-.lechef-value-interactive:before{border:2px dashed #ccc;padding:5px;top:-20px}
+.lechef-value-interactive:before{border:1px dashed #e9e9e9;padding:5px;top:-20px}
 .lechef-value-interactive.lechef-input[data-pos="1"]:before{top:0}
 .lechef-value-incorrect:before{border-color:red;color:white;background-color:rgba(255,120,120,0.5)}
 .lechef-value-correct:before{border-color:green;color:white;background-color:rgba(120,255,120,0.5)}
@@ -44,7 +44,7 @@
 .lechef-feedback .lechef-correct .lechef-output-table{color:greenyellow}
 .lechef-feedback .lechef-incorrect .lechef-output-table{color:#EE5757}
 .lechef-feedback .lechef-active{font-weight:bolder}
-.lechef-feedback tr.lechef-active:before{border-left-color:gray;left:-10px}
+.lechef-feedback tr.lechef-active:before{border-left-color:rgb(246, 243, 243);left:-10px}
 .lechef-feedback .lechef-incorrect.lechef-active td{border-color:#EE5757}
 .lechef-feedback .lechef-correct.lechef-active td{border-color:greenyellow}
 .lechef-buttonpanel{text-align:center;margin:1em auto}
