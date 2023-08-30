@@ -19,15 +19,21 @@ const response0 = fetch(url0, {
   .then((response) => response.json())
   .then((data) => {
     levels = data.levels;
+    var points=0;
     for (let index = 0; index < levels.length; index++) {
       const level = levels[index];
       if (level.done === true) {
         console.log(level.levelno);
+        points+=1;
         const button = document.getElementById(`level${level.levelno}`);
         button.classList.add("done");
         button.disabled = true;
       }
     }
+    const user = document.getElementById("username");
+    user.innerHTML=localStorage.username;
+    const point = document.getElementById("user-point");
+    point.innerHTML= points;
   });
 
 var levelnum;
