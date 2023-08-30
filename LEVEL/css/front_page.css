@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url("../images/fpg.jpg");
+    background-size: 100%;
+    background-position: center;
+  }
+
+  .highlight {
+    font-size: 98px;
+    color: #040b2f;
+    font-weight: bold;
+  }
+
+  .button {
+    padding: 15px 30px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 0;
+  }
+  
+  .container {
+    text-align: center;
+    margin-top: 0%;
+  }
+
+  .highlight-container {
+    margin-top: 0px;
+    margin-bottom: 80px;
+    padding: 10px 20px;
+    position:relative;
+    border: 5px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.6s ease-in-out;
+  }
+
+  .highlight-container:hover {
+    border-color: #2a799d;
+  }
+
+  .highlight {
+    font-size: 100px;
+    color: #a5be35;
+    font-weight: bold;
+  }
+
+  .button {
+    padding: 15px 30px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .info-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(46, 104, 148, 0.5); 
+    padding: 20px;
+    border: 5px solid #4285f4;
+    border-radius: 10px;
+    text-align: left;
+    color: white;
+  }
+
+  div.image {
+    content:url("../images/techno_logo.png");
+    width: 190px;
+ }​
+ 
+  .info-box p {
+    font-weight: bold;
+  }

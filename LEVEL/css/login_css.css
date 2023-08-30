@@ -1,0 +1,125 @@
+/* Reset default margin and padding */
+body, h1, form {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply background video to the entire page */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url("../images/loginbgp.png");
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+
+/* Login container */
+/*#loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+#loginForm {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Login form elements */
+
+
+/*#loginForm label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#loginForm input {
+  width: 100%;
+  padding: 1px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 19px;
+}
+
+#submit {
+  padding: 10px 20px;
+  background-color: #d8cc7f;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-size: 19px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#submit:hover {
+  background-color: #000 ;
+}*/ 
+
+.login-container {
+  width: 300px;
+  height: 370px;
+  background-color: #222222;
+  padding: 15px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 5px solid rgba(234,216,154,255) ;
+  box-shadow: 0px 0px 15px #fac906;
+  margin: 0 auto;
+  margin-top: 5px;
+  align-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.login-header {
+  font-family: 'Black Ops One', cursive;
+  font-size: 36px;
+  color: #fac906;
+  margin-bottom: 20px;
+
+}
+
+.login-input {
+  background-color: #333333;
+  width: 92%;
+  padding: 10px 10px 10px 5px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-right: 30px;
+  border: 0.5px solid rgba(234,216,154,255);
+  box-shadow: 0px 0px 5px #fac906 ;
+  border-radius: 5px;
+  align-items: center;
+  color: #fff;
+}
+
+
+.login-button {
+  padding: 10px 20px;
+  background-color: #fac906;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  margin-top: 50px;
+  font-family: 'Black Ops One', cursive;
+  font-size: 19px;
+  cursor: pointer;
+  transition: background-color 0.3s;;
+}
+
+.login-button:hover {
+  background-color: #000; 
+  color: #fac906;
+}
+

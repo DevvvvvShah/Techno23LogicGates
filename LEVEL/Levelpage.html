@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Button Levels</title>
-<link rel="stylesheet" type="text/css" href="levelpage_css.css">
+<title>Level Select</title>
+<link rel="stylesheet" type="text/css" href="./css/levelpage_css.css">
 
 </head>
 <body>
@@ -12,7 +12,11 @@
   <div class="header-container">
     <h1 style="color: #fff; font-size: 4rem; margin-bottom: 20px;">Choose a Level</h1>
   </div>
-  <div class="button-container">
+  <div class="user">
+    <div id="user-container">Username: <span id="username"></span></div>
+    <div class="point-container">Points: <span id="user-point"></span></div>
+  </div>
+    <div class="button-container">
    
     <div class="level-button-container">
       <div class="level-button-row">
@@ -66,7 +70,7 @@
       }
     }
   </script>
-  <script src="./levelControl.js"></script>
+  <script src="./js/levelControl.js"></script>
 
 </body>
 </html>
