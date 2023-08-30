@@ -103,7 +103,7 @@ const response = fetch(url, {
     tbody += "</tbody>";
     document.getElementById("tablebody").innerHTML = tbody;
     var exer = new CircuitExercise({
-      element: $("#design-example"),
+      element: $(".circuit-exercise-container"),
       input: input,
       output: ["g"],
       grading: table,
