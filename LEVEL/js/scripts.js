@@ -6,7 +6,7 @@ var elapsedTime = 0;
 function checklevel(level) {
   return level.levelno == number;
 }
-
+var levelpoint;
 const url0 = "/api/users/" + localStorage.username;
 const response0 = fetch(url0, {
   method: "Get", // *GET, POST, PUT, DELETE, etc.
@@ -57,6 +57,7 @@ const response = fetch(url, {
     const level = levels[0];
     console.log(level);
     const name = level.name;
+    levelpoint = level.points;
     const nameview = document.getElementById("levelName");
     document.title = "Level "+ number;
     nameview.innerText = "Level "+number+" : "+name;
@@ -134,6 +135,7 @@ const response = fetch(url, {
           const data = {
             levels: [
               {
+                points: levelpoint,
                 levelno: number,
                 done: true,
                 time: solveTime.toFixed(1),
@@ -171,6 +173,7 @@ const response = fetch(url, {
       const data = {
         levels: [
           {
+            points:0,
             levelno: number,
             done: false,
             time: elapsedTime.toFixed(1),

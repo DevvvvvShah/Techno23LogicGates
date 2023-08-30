@@ -12,6 +12,7 @@ const userSchema = new schema({
   },
   levels:[{
     levelno:{type:Number},
+    points:{type:Number,default:0},
     done:{type:Boolean,default:false},
     time:{type:Number,default:0}
   }]
