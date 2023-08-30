@@ -1,4 +1,4 @@
-const url0 = "http://127.0.0.1:5000/api/users/" + localStorage.username;
+const url0 = "/api/users/" + localStorage.username;
 const response0 = fetch(url0, {
   method: "Get", // *GET, POST, PUT, DELETE, etc.
   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

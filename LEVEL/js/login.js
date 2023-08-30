@@ -5,7 +5,7 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
       console.log({'username':username,'password':password});
-      const response = await fetch("http://127.0.0.1:5000/api/login",{
+      const response = await fetch("/api/login",{
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
             credentials: "include", // include, *same-origin, omit

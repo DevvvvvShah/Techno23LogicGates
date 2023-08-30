@@ -7,7 +7,7 @@ function checklevel(level) {
   return level.levelno == number;
 }
 
-const url0 = "http://127.0.0.1:5000/api/users/" + localStorage.username;
+const url0 = "/api/users/" + localStorage.username;
 const response0 = fetch(url0, {
   method: "Get", // *GET, POST, PUT, DELETE, etc.
   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -38,7 +38,7 @@ const response0 = fetch(url0, {
 
 var exer;
 //console.log(number)
-const url = "http://127.0.0.1:5000/api/level/" + number;
+const url = "/api/level/" + number;
 const response = fetch(url, {
   method: "Get", // *GET, POST, PUT, DELETE, etc.
   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -123,7 +123,7 @@ const response = fetch(url, {
           alert("Level completed successfully");
           //send time to db;
           const url =
-            "http://127.0.0.1:5000/api/users/" + localStorage.username;
+            "/api/users/" + localStorage.username;
           const data = {
             levels: [
               {
@@ -160,7 +160,7 @@ const response = fetch(url, {
 
     const exitButton = document.getElementById("exitButton");
     exitButton.addEventListener("click", function () {
-      const url = "http://127.0.0.1:5000/api/users/" + localStorage.username;
+      const url = "/api/users/" + localStorage.username;
       const data = {
         levels: [
           {

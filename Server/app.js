@@ -52,22 +52,22 @@ app.get("/", (req, res) => {
   }
 });
 
-app.get("/loginjs", (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname + "/../LEVEL/login.js"));
-  } catch (error) {
-    console.error("Error sending file:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-app.get("/logincss", (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname + "/../LEVEL/login_css.css"));
-  } catch (error) {
-    console.error("Error sending file:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
+// app.get("/loginjs", (req, res) => {
+//   try {
+//     res.sendFile(path.join(__dirname + "/../LEVEL/login.js"));
+//   } catch (error) {
+//     console.error("Error sending file:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
+// app.get("/logincss", (req, res) => {
+//   try {
+//     res.sendFile(path.join(__dirname + "/../LEVEL/login_css.css"));
+//   } catch (error) {
+//     console.error("Error sending file:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
 
 app.get("/levelpage", (req, res) => {
   try {
@@ -77,25 +77,25 @@ app.get("/levelpage", (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-app.get("/levelpagejs", (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname + "/../LEVEL/levelControl.js"));
-  } catch (error) {
-    console.error("Error sending file:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-app.get("/levelpagecss", (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname + "/../LEVEL/levelpage_css.css"));
-  } catch (error) {
-    console.error("Error sending file:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
+// app.get("/levelpagejs", (req, res) => {
+//   try {
+//     res.sendFile(path.join(__dirname + "/../LEVEL/levelControl.js"));
+//   } catch (error) {
+//     console.error("Error sending file:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
+// app.get("/levelpagecss", (req, res) => {
+//   try {
+//     res.sendFile(path.join(__dirname + "/../LEVEL/levelpage_css.css"));
+//   } catch (error) {
+//     console.error("Error sending file:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
 
 
-app.use(express.static(__dirname + "/../build"));
+// app.use(express.static(__dirname + "/../build"));
 app.get("/level", (req, res) => {
   try {
     res.sendFile(path.join(__dirname + "/../LEVEL/level.html"));
