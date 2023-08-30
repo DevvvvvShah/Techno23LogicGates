@@ -60,12 +60,18 @@ const response = fetch(url, {
   .then((data) => {
     const levels = data;
     const level = levels[0];
+    console.log(level);
+    const name = level.name;
+    const nameview = document.getElementById("levelName");
+    document.title = "Level "+ number;
+    nameview.innerText = "Level "+number+" : "+name;
+    const pointsbox = document.getElementById("pointsValue")
+    pointsbox.innerText = level.points;
     const table = level.truthTable;
     const constructors = level.constructors;
     var constructorDict1 = {};
     var constructorDict2 = {};
     const counterlist = document.getElementById("counterlist");
-    var list = "";
     constructors.forEach((constructor) => {
       constructorDict1[constructor.name] = constructor.amount;
       var count = document.createElement("li");
@@ -251,6 +257,26 @@ const response = fetch(url, {
     $(".addtwos", $buttonPanel).click(
       function () {
         gateIncrement("twos");
+      }.bind(this)
+    );
+    $(".addeqv", $buttonPanel).click(
+      function () {
+        gateIncrement("eqv");
+      }.bind(this)
+    );
+    $(".addxor", $buttonPanel).click(
+      function () {
+        gateIncrement("xor");
+      }.bind(this)
+    );
+    $(".addnand", $buttonPanel).click(
+      function () {
+        gateIncrement("nand");
+      }.bind(this)
+    );
+    $(".addnor", $buttonPanel).click(
+      function () {
+        gateIncrement("nor");
       }.bind(this)
     );
     // exer.('componentAdded', function (components) {

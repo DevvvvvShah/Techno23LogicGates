@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Logical Circuit Exercise</title>
+    <title id="levelTitle">Loading Level...</title>
     <link rel="stylesheet" href="./build/lechef.css" />
     <meta charset="UTF-8" />
   </head>
@@ -47,7 +47,7 @@
         background-color: transparent;
       }
       .circuit-exercise-container > svg {
-        z-index: 0;
+        z-index: 500;
       }
 
 
@@ -81,6 +81,7 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         border-collapse: collapse;
         margin-bottom: 8px;
+        z-index: 10;
         
       }
 
@@ -184,6 +185,7 @@
         display: flex;
         flex-direction: inline;
         align-items: flex-start;
+        z-index: 500;
       }
 
       #resetButton,
@@ -204,7 +206,7 @@
         font-weight: bold;
       }
     </style>
-    <h1>Circuit Exercise Example</h1>
+    <h1 id="levelName">Loading Table...</h1>
     <div>Construct a circuit for this truth table:</div>
     <table>
       <thead id="tablehead"></thead>
@@ -226,7 +228,7 @@
       </div>
     </div>
     <div id="pointsBox">
-      <span id="pointsValue">***</span> Points
+      <span id="pointsValue">0</span> Points
     </div>
     <div id = "reset_submit">
       <button id="resetButton">Reset</button>

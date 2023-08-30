@@ -20,8 +20,8 @@ exports.getLevelByNumber = async (req, res) => {
 
 exports.setLevel = async (req, res) => {
   try {
-    const {number,constructors,truthTable} = req.body;
-    const level = new Level({number,constructors,truthTable});
+    const levelb = req.body;
+    const level = new Level(levelb);
     await level.save();
     res.status(201).json(level);
   } catch (error) {
