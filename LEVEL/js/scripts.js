@@ -28,12 +28,7 @@ const response0 = fetch(url0, {
   .then((response) => response.json())
   .then((data) => {
     elapsedTime = data.levels.find(checklevel).time;
-    setInterval(() => {
-      elapsedTime = elapsedTime + 0.1; // Convert to seconds
-      document.getElementById(
-        "counter"
-      ).textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
-    }, 100); // Update every 0.1 second (100 milliseconds)
+    
   });
 
 var exer;
@@ -116,7 +111,13 @@ const response = fetch(url, {
       components: constr,
       addSubmit: false,
     });
-
+    setInterval(() => {
+      elapsedTime = elapsedTime + 0.1; // Convert to seconds
+      document.getElementById(
+        "counter"
+      ).textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
+    }, 100); // Update every 0.1 second (100 milliseconds)
+    
     $("#submitfinal").click(function (event) {
       event.preventDefault();
       exer.grade(function (feedback) {
