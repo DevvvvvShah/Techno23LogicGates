@@ -159,7 +159,7 @@ const response = fetch(url, {
               console.log(error);
             })
             .then((response) => {
-              window.location.href = "Levelpage.html";
+              window.location.href = "/levelpage";
             });
         }
       });
