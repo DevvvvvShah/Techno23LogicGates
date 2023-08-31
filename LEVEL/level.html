@@ -3,9 +3,9 @@
   <head>
     <title id="levelTitle">Loading Level...</title>
     <link rel="stylesheet" href="./build/lechef.css" />
+    <link rel="stylesheet" href="./css/intro_page.css">
     <meta charset="UTF-8" />
   </head>
-
   <body>
     <style>
       * {
@@ -205,6 +205,37 @@
       .component-counter span {
         font-weight: bold;
       }
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; 
+    }
+
+    .popup-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        max-height : 100%;
+
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
     </style>
     <h1 id="levelName">Loading Table...</h1>
     <div>Construct a circuit for this truth table:</div>
@@ -213,6 +244,74 @@
       <tbody id="tablebody"></tbody>
     </table>
     <button id="exitButton">Exit</button>
+    <button id="showPopupButton">Info</button>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <div id="title"><h1>Guide to gates</h1></div>
+  <div class="container">
+    <h1>AND Gate</h1>
+    <p>voh theoritcal description if required....... "_"</p>
+    <!-- <img class="gate-image" src="../LEVEL/images/and_gate.png"> -->
+    <div class="andimage gate-image"></div>
+    <div class="truth-table">
+      <h2>Truth Table</h2>
+      <table>
+        <tr>
+          <th>Input A</th>
+          <th>Input B</th>
+          <th>Output</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="container">
+    <h1>NOT Gate</h1>
+    <p> theoritcal description if required....... "_"</p>
+    <!-- <img class="gate-image" src="../LEVEL/images/not_gate.png"> -->
+    <div class="notimage gate-image"></div>
+    <div class="truth-table">
+      <h2>Truth Table</h2>
+      <table>
+        <tr>
+          <th>Input</th>
+          <th>Output</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+        </div>
+    </div>
     <table>
       <thead id="tablehead"></thead>
       <tbody id="tablebody"></tbody>
@@ -238,7 +337,19 @@
     <div style="position: relative">
       <div class="circuit-exercise-container"></div>
     </div>
+    <script type="text/javascript">
+      window.onbeforeunload = function() {
+          console.log("abc");
+          confirm( "Dude, are you sure you want to leave? Think of the kittens!");
+      }
+      document.getElementById("showPopupButton").addEventListener("click", function() {
+          document.getElementById("popup").style.display = "block";
+      });
 
+      document.getElementById("closePopup").addEventListener("click", function() {
+          document.getElementById("popup").style.display = "none";
+      });
+  </script>
     <script src="./libs/jquery-2.1.1.min.js"></script>
     <script src="./libs/jquery-ui-1.11.min.js"></script>
     <script src="./libs/snap.svg.js"></script>

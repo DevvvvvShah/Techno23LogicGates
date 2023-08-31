@@ -39,6 +39,14 @@ body {
   h1 {
     color: #4285f4;
   }
+  .notimage {
+    content:url("../images/not_gate.png");
+    align-items: center;
+ }
+ .andimage {
+  content:url("../images/and_gate.png");
+  align-items: center;
+}
 
   .gate-image {
     max-width: 300px;
