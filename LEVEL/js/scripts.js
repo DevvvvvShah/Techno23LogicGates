@@ -222,6 +222,10 @@ const response = fetch(url, {
         exer.editor.circuit.removeComponent( exer.editor.circuit._components[i]._componentName);
         //exer.editor.circuit._components[i].remove();
       }
+      for (var i = input.length; i >= 0; i--) {
+        exer.editor.circuit._components[i].removeLines();
+        //exer.editor.circuit._components[i].remove();
+      }
       console.log(exer.editor.circuit._components)
     }
 

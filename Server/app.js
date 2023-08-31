@@ -102,7 +102,14 @@ app.get("/levelpage", (req, res) => {
 //     res.status(500).send("Internal Server Error");
 //   }
 // });
-
+app.get("/intropage", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname + "/../LEVEL/intropage.html"));
+  } catch (error) {
+    console.error("Error sending file:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 // app.use(express.static(__dirname + "/../build"));
 app.get("/level", (req, res) => {

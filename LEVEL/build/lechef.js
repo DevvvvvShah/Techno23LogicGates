@@ -241,6 +241,32 @@
     //console.log(this);
     this.element.remove();
   };
+  compproto.removeLines = function() {
+    var i, j, k, o, c;
+    // remove all inputs to this component
+    for (i = this._inputs.length; i--; ) {
+      this.removeInput(i);
+    }
+    // Connections are defined by the component they are input to.
+    // So, we go through all outputs of this component and all the
+    // components the outputs are connected (2nd loop). Then we go
+    // through the inputs of that component and try to find this
+    // component (which we are removing). If we find this component,
+    // we remove it as input. Simple, right ;)
+    for (i = this._outputs.length; i--; ) {
+      o = this._outputs[i];
+      for (j = o.length; j--; ) {
+        c = o[j];
+        for (k = c._inputs.length; k--; ) {
+          if (this === c._inputs[k]) {
+            c.removeInput(k);
+            break;
+          }
+        }
+        //this._removeOutput(o[j]);
+      }
+    }
+  }
   compproto._getOutputLocation = function(pos) {
     var e = this._outputElements[pos],
         ePos = e.position(),
