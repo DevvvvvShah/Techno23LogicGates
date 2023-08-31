@@ -135,7 +135,7 @@ const response = fetch(url, {
           const data = {
             levels: [
               {
-                points: 50,
+                points: levelpoint,
                 levelno: number,
                 done: true,
                 time: solveTime.toFixed(1),
