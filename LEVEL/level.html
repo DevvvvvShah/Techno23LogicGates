@@ -46,13 +46,13 @@
         position: relative;
       }
       .circuit-exercise-container {
-        height: 100px;
+        height: 50vh;
         margin-top: -60px;
         width: 100%;
-        border: none;
         padding: 0;
-        background-color: rgb(255, 255, 255);
-        background-color: transparent;
+        /* background-color: rgb(255, 255, 255); */
+        /* background-color: #ecedf0; */
+        
       }
       .circuit-exercise-container > svg {
         z-index: 500;
@@ -64,7 +64,10 @@
         background-color: #f5f5f5;
       }
       #feedback{
-        padding: 0%;        
+        position: absolute;
+        top:-11vh;
+        padding: 0%; 
+        z-index: 50;       
       }
 
       .container {
@@ -90,24 +93,31 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         background-color: white;
         border-collapse: collapse;
-        margin-bottom: 70%;
+        /* margin-bottom: %; */
         z-index: 10;
         margin-top: 4%;
         position: relative;
         table-layout: fixed;
-        margin-right: 15px;
+        margin-right: 20px;
       }
 
       th,
       td {
-        margin: 100px;
-        padding: 15px;
+        margin: 10px;
+        padding: 10px;
         text-align: center;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         border: 2px solid #3882cd;
         background-color: #eee;
       }
-
+      tr{
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        border: 2px solid #3882cd;
+        background-color: #eee;
+      }
       
 
       button {
@@ -144,6 +154,7 @@
       background-color: #ffffff;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       text-align: center;
+      z-index: 50;
       }
 
       #componentUsage {
@@ -243,7 +254,7 @@
 
        #big_big_container{
         display: flex;
-        margin-top: 130px;
+        margin-top: 100px;
         flex-direction: column;
         width: 85%;
         max-height: -20px;  
@@ -252,8 +263,8 @@
           background-color: whitesmoke;
           display: flex;
           width: 100%;
-          margin-top: 30px;
-          max-height: 600px;
+          margin-top: -10px;
+          height: 60vh;
           position: relative;
       }
       #lechef-buttonpanel{
@@ -264,14 +275,11 @@
           margin-top: 10px;
           background-color: #ecedf0;
           width: 100%;
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          border: 1px solid #000; /* Add a 1px solid black border */
-          padding: 10px; /* Add padding for spacing between the border and content */
-          padding-top: -10px;
-      }
+          margin-top: 60px;
+          height: 40vh;
+          border-style: dashed;
+          border-radius: 10px;
+}
     .popup-content {
         background-color: #fff;
         padding: 20px;
@@ -402,11 +410,7 @@
             <div class="circuit-exercise-container"></div>
         </div>
     </div>
-    
-      
-    </div>
     <div id="feedback" class = "circuit-container"></div>
-  </div>
      </div>
 
     <script type="text/javascript">
