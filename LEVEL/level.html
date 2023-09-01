@@ -36,14 +36,22 @@
         height: 100%;
         width: 100%;
         margin: 0;
+        display:flex;
+        
+      }
+
+      .table-container {
+        width: 20%;
+        padding: 20px;
+        position: relative;
       }
       .circuit-exercise-container {
-        height: 800px;
+        height: 100px;
         margin-top: -60px;
         width: 100%;
         border: none;
         padding: 0;
-        background-color: rgb(92, 31, 31);
+        background-color: rgb(255, 255, 255);
         background-color: transparent;
       }
       .circuit-exercise-container > svg {
@@ -74,24 +82,30 @@
       }
 
       table {
-        width: 30%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
+        width: 25%;
+        margin-left: 0px;
+        /* 
+        margin-right: auto; */
+        /* margin-top: 10px; */
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        background-color: white;
         border-collapse: collapse;
-        margin-bottom: 8px;
+        margin-bottom: 70%;
         z-index: 10;
-        
+        margin-top: 4%;
+        position: relative;
+        table-layout: fixed;
+        margin-right: 15px;
       }
 
       th,
       td {
-        margin: 30px;
-        padding: 30px;
+        margin: 100px;
+        padding: 15px;
         text-align: center;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         border: 2px solid #3882cd;
+        background-color: #eee;
       }
 
       
@@ -107,13 +121,16 @@
       }
 
       .circuit-container {
+        
       position: relative;
       margin-top: 80px; 
-      margin-bottom: 100px;;
+      margin-bottom: 100px;
       background-color: #eee;
+      
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
       }
 
 
@@ -168,19 +185,24 @@
         
         margin-right: 2px;
       }
-      #exitButton { 
+      #cool_buttons { 
         margin-top: 20px; 
         position: absolute;
         top: 20px;
         left:20px;
-        background-color: #f44242;
+        background-color: #f4eeee;
         color: white;
         border-radius: 0;
+        z-index: 11;
+      }
+      
+      #exitButton{
+        background-color: red;
       }
       #reset_submit {
-        position: absolute;
+        position: relative;
         top: 60%;
-        left: 20px;
+        left: 0px;
         transform: translateY(-50%);
         display: flex;
         flex-direction: inline;
@@ -219,6 +241,26 @@
         overflow: hidden; 
     }
 
+       #big_big_container{
+        display: flex;
+        margin-top: 130px;
+        flex-direction: column;
+        width: 85%;
+        max-height: -20px;  
+       }
+       #big_container {
+          background-color: whitesmoke;
+          display: flex;
+          width: 100%;
+          margin-top: 30px;
+          max-height: 600px;
+          position: relative;
+      }
+
+      #content_below_table {
+          background-color: #ecedf0; /* Set the background color to white */
+          width: 100%;
+}
     .popup-content {
         background-color: #fff;
         padding: 20px;
@@ -238,13 +280,15 @@
     }
     </style>
     <h1 id="levelName">Loading Table...</h1>
-    <div>Construct a circuit for this truth table:</div>
-    <table>
-      <thead id="tablehead"></thead>
-      <tbody id="tablebody"></tbody>
-    </table>
-    <button id="exitButton">Exit</button>
-    <button id="showPopupButton">Info</button>
+    <div>Construct a circuit for this truth table: +++ thoda toh description do</div>
+    <div id="cool_buttons">
+      <button id="exitButton">Exit</button>
+      <button id="showPopupButton">Info</button>
+    </div>
+
+
+      
+
 
     <div id="popup" class="popup">
         <div class="popup-content">
@@ -312,31 +356,48 @@
   </div>
         </div>
     </div>
-    <table>
+
+
+    <!-- <table>
       <thead id="tablehead"></thead>
       <tbody id="tablebody"></tbody>
-    </table>
+    </table> -->
     
-    <div id="counter-wrapper">
-      <p id="counter">Elapsed time: 0 seconds</p>
-    </div>
-    <div id="componentUsage-wrapper">
-      <div id="componentUsage">
-        <h3>Component Usage:</h3>
-        <ul id="counterlist"></ul>
+      <div id="counter-wrapper">
+        <p id="counter">Elapsed time: 0 seconds</p>
       </div>
+      <div id="componentUsage-wrapper">
+        <div id="componentUsage">
+          <h3>Component Usage:</h3>
+          <ul id="counterlist"></ul>
+        </div>
+      </div>
+      <div id="pointsBox">
+        <span id="pointsValue">0</span> Points
+      </div>
+      <div id = "big_big_container">
+        <div id = "reset_submit">
+          <button id="resetButton">Reset</button>
+          <button id="submitfinal">Submit</button>
+        </div>
+      <div id = "big_container">
+      
+      <table>
+        <thead id="tablehead"></thead>
+        <tbody id="tablebody"></tbody>
+      </table>
+      <div id="content_below_table">
+        <div style="position: relative;">
+            <div class="circuit-exercise-container"></div>
+        </div>
     </div>
-    <div id="pointsBox">
-      <span id="pointsValue">0</span> Points
-    </div>
-    <div id = "reset_submit">
-      <button id="resetButton">Reset</button>
-      <button id="submitfinal">Submit</button>
+    
+      
     </div>
     <div id="feedback" class = "circuit-container"></div>
-    <div style="position: relative">
-      <div class="circuit-exercise-container"></div>
-    </div>
+  </div>
+     </div>
+
     <script type="text/javascript">
       window.onbeforeunload = function() {
           console.log("abc");
