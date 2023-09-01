@@ -1,4 +1,4 @@
-const Level = require('../Models/level');
+const Level = require('../Models/Level');
 // const TruthLine = require('../Models/trthLine');
 exports.getLevel = async (req, res) => {
   try {
