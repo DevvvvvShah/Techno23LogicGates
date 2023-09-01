@@ -256,11 +256,22 @@
           max-height: 600px;
           position: relative;
       }
-
+      #lechef-buttonpanel{
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
       #content_below_table {
-          background-color: #ecedf0; /* Set the background color to white */
+          margin-top: 10px;
+          background-color: #ecedf0;
           width: 100%;
-}
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          border: 1px solid #000; /* Add a 1px solid black border */
+          padding: 10px; /* Add padding for spacing between the border and content */
+          padding-top: -10px;
+      }
     .popup-content {
         background-color: #fff;
         padding: 20px;
