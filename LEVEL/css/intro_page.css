@@ -43,10 +43,19 @@ body {
     content:url("../images/not_gate.png");
     align-items: center;
  }
+ .orimage{
+    content:url("../images/or_gate.png");
+    align-items: center;
+ }
+ .xorimage{
+    content:url("../images/xor_gate.png");
+    align-items: center;
+ }
  .andimage {
   content:url("../images/and_gate.png");
   align-items: center;
 }
+
 
   .gate-image {
     max-width: 300px;
