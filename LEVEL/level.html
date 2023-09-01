@@ -34,9 +34,10 @@
       }      
       body {
         height: 100%;
-        width: 100%;
+        max-width: 100%;
         margin: 0;
         display:flex;
+        overflow:hidden;
         
       }
 
@@ -56,12 +57,14 @@
       }
       .circuit-exercise-container > svg {
         z-index: 500;
+        touch-action: none;
       }
 
 
       body {
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
+        max-width: 100%;
       }
       #feedback{
         position: absolute;
@@ -276,6 +279,7 @@
           background-color: #ecedf0;
           width: 100%;
           margin-top: 60px;
+          max-width: 80%;
           height: 40vh;
           border-style: dashed;
           border-radius: 10px;
