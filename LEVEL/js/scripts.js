@@ -112,7 +112,7 @@ const response = fetch(url, {
       grading: table,
       components: constr,
       addSubmit: false,
-      
+
     });
     setInterval(() => {
       elapsedTime = elapsedTime + 0.1; // Convert to seconds
@@ -220,15 +220,13 @@ const response = fetch(url, {
     });
 
     function reset() {
-      for (var i = exer.editor.circuit._components.length - 1; i > input.length; i--) {
+      for (var i = exer.editor.circuit._components.length - 1; i > -1; i--) {
         exer.editor.circuit.removeComponent( exer.editor.circuit._components[i]._componentName);
         //exer.editor.circuit._components[i].remove();
       }
-      for (var i = input.length; i >= 0; i--) {
-        exer.editor.circuit._components[i].removeLines();
-        //exer.editor.circuit._components[i].remove();
-      }
-      console.log(exer.editor.circuit._components)
+      exer.initInputs();
+      exer.initOutputs();
+      //console.log(exer.editor.circuit._components)
     }
 
     function gateIncrement(comp) {
