@@ -7,6 +7,7 @@ function checklevel(level) {
   return level.levelno == number;
 }
 var levelpoint;
+// $( ".lechef-component" ).draggable({ containment: "#content_below_table", scroll: false })
 const url0 = "/api/users/" + localStorage.username;
 const response0 = fetch(url0, {
   method: "Get", // *GET, POST, PUT, DELETE, etc.
@@ -111,6 +112,7 @@ const response = fetch(url, {
       grading: table,
       components: constr,
       addSubmit: false,
+      
     });
     setInterval(() => {
       elapsedTime = elapsedTime + 0.1; // Convert to seconds

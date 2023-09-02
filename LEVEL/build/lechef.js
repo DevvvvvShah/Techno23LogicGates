@@ -356,6 +356,7 @@
   };
   compproto._draggable = function() {
     this.element.draggable({
+      containment: "#content_below_table",
       start: function() {
         if (this.options.clearFeedbackOnDrag) {
           self.circuit.clearFeedback();
