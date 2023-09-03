@@ -49,7 +49,7 @@
       .circuit-exercise-container {
         height: 50vh;
         margin-top: -60px;
-        width: 100%;
+        max-width: 100%;
         padding: 0;
         /* background-color: rgb(255, 255, 255); */
         /* background-color: #ecedf0; */
@@ -68,9 +68,10 @@
       }
       #feedback{
         position: absolute;
-        top:-11vh;
+        top:-3vh;
         padding: 0%; 
-        z-index: 50;       
+        z-index: 50;
+        height:70vh;
       }
 
       .container {
@@ -149,7 +150,7 @@
 
       #componentUsage-wrapper {
       position: absolute;
-      top: 30px;
+      top: 30px ;
       right: 20px;
       border: 2px solid #4285f4;
       border-radius: 5px;
@@ -277,9 +278,9 @@
       #content_below_table {
           margin-top: 10px;
           background-color: #ecedf0;
-          width: 150%;
+          width: 100%;
           margin-top: 60px;
-          max-width: 140%;
+          max-width: 100%;
           height: 50vh;
           border-style: dashed;
           border-radius: 10px;
@@ -398,7 +399,7 @@
 
     </style>
     <h1 id="levelName">Loading Table...</h1>
-    <div>Construct a circuit for this truth table: +++ thoda toh description do</div>
+    <div>Construct a circuit for this truth table: </div>
     <div id="cool_buttons">
       <button id="exitButton">Exit</button>
       <button id="showPopupButton">Info</button>

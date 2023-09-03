@@ -763,7 +763,7 @@ containment: "#content_below_table",
   };
 
   var LogicCircuit = function(options) {
-    var opts = $.extend({autoresize: true}, options);
+    var opts = $.extend({autoresize: false}, options);
     this.element = opts.element || $("<div />");
     if (!opts.element) {
       this.element.appendTo(document.body);
