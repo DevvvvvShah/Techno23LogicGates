@@ -49,7 +49,7 @@
       .circuit-exercise-container {
         height: 50vh;
         margin-top: -60px;
-        max-width: 100%;
+        width: 100%;
         padding: 0;
         /* background-color: rgb(255, 255, 255); */
         /* background-color: #ecedf0; */
@@ -68,10 +68,9 @@
       }
       #feedback{
         position: absolute;
-        top:-3vh;
+        top:-11vh;
         padding: 0%; 
-        z-index: 50;
-        height:70vh;
+        z-index: 50;       
       }
 
       .container {
@@ -150,7 +149,7 @@
 
       #componentUsage-wrapper {
       position: absolute;
-      top: 30px ;
+      top: 30px;
       right: 20px;
       border: 2px solid #4285f4;
       border-radius: 5px;
@@ -278,9 +277,9 @@
       #content_below_table {
           margin-top: 10px;
           background-color: #ecedf0;
-          width: 100%;
+          width: 150%;
           margin-top: 60px;
-          max-width: 100%;
+          max-width: 140%;
           height: 50vh;
           border-style: dashed;
           border-radius: 10px;
@@ -399,7 +398,7 @@
 
     </style>
     <h1 id="levelName">Loading Table...</h1>
-    <div>Construct a circuit for this truth table: </div>
+    <!-- <div>Construct a circuit for this truth table: +++ thoda toh description do</div> -->
     <div id="cool_buttons">
       <button id="exitButton">Exit</button>
       <button id="showPopupButton">Info</button>
@@ -415,7 +414,7 @@
  <div id="title" class = "intro-title"><h1>Guide to gates</h1></div>
   <div class="container">
     <h1>AND Gate</h1>
-    <p>voh theoritcal description if required....... "_"</p>
+    <p>Implements . Operator in Boolean algrebra. Both inputs need to be true to get a true output</p>
     <!-- <img class="gate-image" src="../LEVEL/images/and_gate.png"> -->
     <div class="andimage gate-image"></div>
     <div class="truth-table">
@@ -453,7 +452,7 @@
   
   <div class="container">
     <h1>NOT Gate</h1>
-    <p> theoritcal description if required....... "_"</p>
+    <p> Inverts the output. Implements the complement operator in Boolean Algebra</p>
     <!-- <img class="gate-image" src="../LEVEL/images/not_gate.png"> -->
     <div class="notimage gate-image"></div>
     <div class="truth-table">
@@ -476,7 +475,7 @@
   </div>
   <div class="container">
     <h1>XOR Gate</h1>
-    <p> "___" description</p>
+    <p> Provides output when only one of the input is true.</p>
     <div class="xorimage gate-image"></div>
     <div class="truth-table">
         <h2>Truth Table</h2>
@@ -512,7 +511,7 @@
 
 <div class="container">
   <h1>OR Gate</h1>
-  <p> "-"</p>
+  <p>Provides output when any of the input is true. Implements + operator</p>
   <div class="orimage gate-image"></div>
   <div class="truth-table">
       <h2>Truth Table</h2>
