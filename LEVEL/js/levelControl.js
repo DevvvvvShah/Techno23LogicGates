@@ -36,16 +36,19 @@ const response0 = fetch(url0, {
     point.innerHTML= points;
   });
 
-var levelnum;
+var levelnum=1;
 function showModal(level) {
-  const modal = document.getElementById("myPop");
-  modal.style.display = "flex";
+  // console.log(e);
+  // console.log(level)
+  // const modal = document.getElementById("myPop");
+  // modal.style.display = "flex";
   levelnum = level;
+  closeModal(true)
 }
 
 function closeModal(confirm) {
-  const modal = document.getElementById("myPop");
-  modal.style.display = "none";
+  // const modal = document.getElementById("myPop");
+  // modal.style.display = "none";
   if (confirm) {
     window.location.href = "/level/" + levelnum;
   }

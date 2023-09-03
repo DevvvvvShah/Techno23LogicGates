@@ -114,12 +114,12 @@ const response = fetch(url, {
       addSubmit: false,
 
     });
-    setInterval(() => {
-      elapsedTime = elapsedTime + 0.1; // Convert to seconds
-      document.getElementById(
-        "counter"
-      ).textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
-    }, 100); // Update every 0.1 second (100 milliseconds)
+    elapsedTime = elapsedTime + 0.1; // Convert to seconds
+    // setInterval(() => {
+    //   document.getElementById(
+    //     "counter"
+    //   ).textContent = `Elapsed time: ${elapsedTime.toFixed(1)} seconds`;
+    // }, 100); // Update every 0.1 second (100 milliseconds)
     
     $("#submitfinal").click(function (event) {
       event.preventDefault();
